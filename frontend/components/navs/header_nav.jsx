@@ -7,26 +7,25 @@ import SessionForm from "../session_form/session_form";
 const HeaderNav = () => {
   const currentUser = useSelector((state) => state.session.currentUser);
   const dispatch = useDispatch();
-  if (currentUser) {
-    return (
-      <div>
-        <h1>Zip</h1>
-        <h1>{currentUser.email}</h1>
-        <button type="submit" onClick={() => dispatch(logout())}>
-          LogOut
-        </button>
+
+  return (
+    <div className="NavHeader">
+      <div className="NavHeader-left">
+        <Link to="/buy"> Buy </Link>
+        <Link to="/buy"> Rent </Link>
+        <Link to="/buy"> Sell </Link>
+        <Link to="/buy"> AgentFinder </Link>
       </div>
-    );
-  } else {
-    return (
-      <div>
-        <h1>Zip</h1>
-        <Link to="/login">Login</Link>
-        &nbsp; or &nbsp;
-        <Link to="/signup">SignUp</Link>
+      <h1>ZipLogo</h1>
+      {/* <h1>{currentUser.email}</h1> */}
+      <div className="NavHeader-right">
+        <a href="https://www.linkedin.com/in/julia-kim-350712213/"> LinkedIn</a>
+        <a href="https://github.com/juliajykim/Zip">Github</a>
+        <a href="https://angel.co/u/juliajykim"> AngeList </a>
+        {/* <UserSessionContainer /> */}
       </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default HeaderNav;
