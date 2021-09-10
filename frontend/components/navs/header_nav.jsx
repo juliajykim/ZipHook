@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../../actions/session_actions";
-import SessionForm from "../session_form/session_form";
+import UserIcon from "./user_icon";
 
 const HeaderNav = () => {
   const currentUser = useSelector((state) => state.session.currentUser);
@@ -22,7 +22,7 @@ const HeaderNav = () => {
         <a href="https://www.linkedin.com/in/julia-kim-350712213/"> LinkedIn</a>
         <a href="https://github.com/juliajykim/Zip">Github</a>
         <a href="https://angel.co/u/juliajykim"> AngeList </a>
-        {/* <UserSessionContainer /> */}
+        <UserIcon />
       </div>
     </div>
   );
