@@ -1,0 +1,132 @@
+ .modal-background-property{
+  position: fixed;
+  top:  0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.modal-child-property {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 65%;
+  height: 97vh;
+  background-color: white;
+  border:1px solid lightgray;
+  border-radius: 5px;
+  box-shadow: -1px 4px 6px 1px rgba(0,0,0,0.1);
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+}
+
+
+.property-modal-container{
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 2fr 2fr 2fr 2fr;
+  height: inherit;
+}
+
+.property-photos-container{
+  height:inherit;
+  overflow: scroll;
+  display: grid;
+}
+
+.property-info-container{
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  font-size: 18px;
+}
+
+.property-info-header{
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  
+  border-bottom: 1px solid lightgrey;
+    >img{
+      width: 25%;
+      height: 100%;
+      object-fit: fill;
+    } 
+    #heart > i{
+      height: auto;
+      width: auto;
+    }
+}  
+
+.property-info{
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-bottom: 1px solid lightgrey;
+    padding: 5% 3% 5% 3%;
+    .property-pbbs{
+      display: flex;
+      padding: 0 0 5% 0;
+      >h1{
+        display: flex;
+        padding: 0 5% 0 0;
+        font-size: 40px;
+        font-weight: bold;
+        >p{
+          font-size: 14px;
+          display: flex;
+          padding: 5px;
+          align-items: flex-end;
+        }
+      }
+    }
+    .modal-property-detail{
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 5px;
+      >*{
+        padding: 0 10px;
+        border-right: 1px solid lightgray;
+      }
+      :last-child{
+        border:none;
+      }
+    }
+}
+
+.heart-container{
+  background-color: transparent;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  object-fit: contain;
+  max-height: fit-content;
+}
+
+#heart{
+  background-color: transparent;
+  color: white;
+  font-size: 40px;
+  z-index: 1;
+}
+
+.saved{
+  color :#006aff;
+}
+
+#mini-map-container {
+  width: 100%;
+  height: 300px;
+}
+
+.property-overview{
+  padding: 15px;
+  >h1{
+    margin: 10px 0;
+  }
+}

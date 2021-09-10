@@ -1,0 +1,146 @@
+.main-search {
+  width: 100vw;
+  height: 500px;
+  background-image: image-url("searchBg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.search-background {
+  display: block;
+  visibility: hidden;
+  height: auto;
+  width: 100vw;
+  position: absolute;
+  z-index: -2;
+}
+
+.main-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.search-slogan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // width: fit-content;
+  font-family: serif;
+  top: 20%;
+  font-size: 40px;
+  color: white;
+  font-weight: bolder;
+  position: relative;
+}
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-bar-form {
+  display: flex;
+  width: 40%;
+  &:hover {
+    border: 1px solid #006aff;
+  }
+}
+
+#search-bar,
+.search-btn {
+  width: 100%;
+  height: 70px;
+  background-color: whitesmoke;
+  border: 1px solid lightgray;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  color: gray;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding-left: 20px;
+  z-index: 1;
+}
+
+#search-bar {
+  border-right: none;
+}
+
+.search-btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  width: 50px;
+  padding: 0;
+  border-left: none;
+  color: #006aff;
+}
+
+.search-nav-area {
+  padding-left: 50px;
+  .filter-from-nav-left {
+    width: 50%;
+  }
+  .search-form {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+  }
+}
+
+.search-box {
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  width: 250px;
+  padding-left: 5px;
+  display: flex;
+  justify-content: space-between;
+  > input[type="text"] {
+    width: 200px;
+  }
+  > button {
+    background-color: transparent;
+    color: #006aff;
+    font-size: 14px;
+  }
+}
+
+.filter-drop-down-wrapper {
+  display: flex;
+  > button {
+    width: 60px;
+    background-color: transparent;
+    color: #006aff;
+    font-size: 12px;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    margin: 0 10px;
+    &:focus-within {
+      border: 1px solid #006aff;
+      background-color: #006aff;
+      color: white;
+    }
+  }
+}
+
+#filter-drop-down-bb {
+  height: 100px;
+  justify-content: center;
+}
+
+.bed-and-bath {
+  > button {
+    background-color: transparent;
+    border: 1px solid #006aff;
+    border-radius: 2px;
+    color: #006aff;
+    &:focus {
+      background-color: #006aff;
+      border: 1px solid #bbbcbe;
+      border-radius: 2px;
+      color: white;
+    }
+  }
+}

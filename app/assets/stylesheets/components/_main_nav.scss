@@ -1,0 +1,41 @@
+.NavHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 80px;
+  border-bottom: solid 1px lightgray;
+}
+
+.NavHeader-left, .NavHeader-right{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.NavHeader-left{
+  margin-left: 10%;
+}
+
+.NavHeader-right{
+  margin-right: 10%;
+}
+
+.NavHeader a {
+  font-size: 14px;
+  text-decoration: none;
+  color: rgb(31, 31, 31);
+  margin: 20px;
+}
+
+.logo-container{
+  display: flex;
+  justify-content: center;
+}
+
+.login-btn{
+  padding: 15px;
+  &:active, &:hover{
+    border: 3px solid rgb(123, 160, 213);
+  }
+}

@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../../actions/session_actions";
-import SessionForm from "../sessoin_form/session_form";
+import SessionForm from "../session_form/session_form";
 
 const HeaderNav = () => {
   const currentUser = useSelector((state) => state.session.currentUser);
