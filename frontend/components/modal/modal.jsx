@@ -25,7 +25,9 @@ const Modal = () => {
   }
 
   return (
-    <div className={`modal-background-${ui.modal}`} onClick={closeModal}>
+    <div
+      className={`modal-background-${ui.modal}`}
+      onClick={() => dispatch(closeModal())}>
       <div
         className={`modal-child-${ui.modal}`}
         onClick={(e) => e.stopPropagation()}>

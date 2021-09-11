@@ -69,7 +69,7 @@ const SessionForm = (props) => {
     <div className="session-form-container">
       <header>
         <h2>Welcome to Zip🏡 </h2>
-        <div onClick={() => dispatch(closeModal)} className="close-x">
+        <div onClick={() => dispatch(closeModal())} className="close-x">
           X
         </div>
       </header>
