@@ -6,20 +6,18 @@ import { closeModal } from "../../actions/modal_actions";
 import { useSelector } from "react-redux";
 
 const Modal = () => {
-  const ui = useSelector((state) => state.ui.modal);
+  let dispatch = useDispatch();
+  let history = useHistory();
+  const ui = useSelector((state) => state.ui);
   if (!ui) {
     return null;
   }
-  let dispatch = useDispatch();
   let component;
-  let history = useHistory();
   switch (ui.modal) {
     case "login":
-      history.push("/login");
       component = <SessionForm />;
       break;
     case "signup":
-      history.push("/signup");
       component = <SessionForm />;
       break;
     default:
@@ -27,8 +25,10 @@ const Modal = () => {
   }
 
   return (
-    <div className="modal-background" onClick={() => dispatch(closeModal)}>
-      <div className="modal-child" onClick={(e) => e.stopPropagation()}>
+    <div className={`modal-background-${ui.modal}`} onClick={closeModal}>
+      <div
+        className={`modal-child-${ui.modal}`}
+        onClick={(e) => e.stopPropagation()}>
         {component}
       </div>
     </div>

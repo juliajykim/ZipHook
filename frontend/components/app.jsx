@@ -12,8 +12,8 @@ const App = () => {
       <HeaderNav />
       <Switch>
         {/* <ProtectedRoute exact path='/zips/new' component={}/> */}
-        <AuthRoute exact path="/login" component={SessionForm} />
-        <AuthRoute exact path="/signup" component={SessionForm} />
+        {/* <AuthRoute exact path="/login" component={SessionForm} /> */}
+        {/* <AuthRoute exact path="/signup" component={SessionForm} /> */}
       </Switch>
     </div>
   );

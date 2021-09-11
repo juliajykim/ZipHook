@@ -14,7 +14,7 @@ const SessionForm = (props) => {
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
   const dispatch = useDispatch();
-  const formType = useRouteMatch().path.slice(1);
+  const formType = useSelector((state) => state.ui.modal);
 
   const emailErr = () => {
     for (let i = 0; i < errors.length; i++) {
