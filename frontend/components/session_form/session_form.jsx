@@ -1,11 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { login, signup, logout } from "../../actions/session_actions";
-import { useRouteMatch } from "react-router-dom";
-import {
-  useComponentDidMount,
-  useComponentWillUnMount,
-} from "../../util/hook_util";
+import { login, signup, clearErrors } from "../../actions/session_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
 
 const SessionForm = (props) => {
@@ -68,6 +63,17 @@ const SessionForm = (props) => {
     dispatch(login(demoUser)).then(dispatch(closeModal));
   };
 
+  const onClick = () => {
+    debugger;
+    if (formType === "login") {
+      dispatch(clearErrors());
+      dispatch(openModal("signup"));
+    } else {
+      dispatch(clearErrors());
+      dispatch(openModal("login"));
+    }
+  };
+
   return (
     <div className="session-form-container">
       <header>
@@ -82,13 +88,13 @@ const SessionForm = (props) => {
           <div className="session-form-option">
             <div className="current-from">{formType}</div>
             <div>
-              <a onClick={() => dispatch(openModal("signup"))}> New Account </a>
+              <a onClick={onClick}>New Account</a>
             </div>
           </div>
         ) : (
           <div className="session-form-option">
             <div>
-              <a onClick={() => dispatch(openModal("login"))}> Log in </a>
+              <a onClick={onClick}>Log in</a>
             </div>
             <div className="current-from"> New Account</div>
           </div>
