@@ -53,23 +53,19 @@ const SessionForm = (props) => {
   };
 
   const handleSubmit = (e) => {
+    debugger;
     e.preventDefault();
     if (formType === "login") {
-      dispatch(login(user)).then(dispatch(closeModal()));
+      dispatch(login(user)).then(dispatch(closeModal));
     } else {
-      dispatch(signup(user)).then(dispatch(closeModal()));
+      dispatch(signup(user)).then(dispatch(closeModal));
     }
-  };
-
-  const otherForm = () => {
-    return formType == "login" ? <p>Sign Up</p> : <p>Login</p>;
   };
 
   const handleDemoUser = (e) => {
     e.preventDefault();
     const demoUser = { email: "demo@zip.com", password: "password" };
-    debugger;
-    dispatch(login(demoUser)).then(dispatch(closeModal()));
+    dispatch(login(demoUser)).then(dispatch(closeModal));
   };
 
   return (
