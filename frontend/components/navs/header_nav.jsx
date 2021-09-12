@@ -16,8 +16,9 @@ const HeaderNav = () => {
         <Link to="/buy"> Sell </Link>
         <Link to="/buy"> AgentFinder </Link>
       </div>
-      <h1>ZipLogo</h1>
-      {/* <h1>{currentUser.email}</h1> */}
+      <Link to="/" className="logo-container">
+        <img className="logo" src={window.logoURL} />
+      </Link>
       <div className="NavHeader-right">
         <a href="https://www.linkedin.com/in/julia-kim-350712213/"> LinkedIn</a>
         <a href="https://github.com/juliajykim/Zip">Github</a>

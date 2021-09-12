@@ -8,6 +8,17 @@
     <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
+      <script type="text/javascript">
+      window.logoURL = "<%= image_url("logo.png") %>"
+      window.buyimgURL = "<%= image_url("buy.jpg") %>"
+      window.sellimgURL = "<%= image_url("Sell.jpg") %>"
+      window.rentimgURL= "<%= image_url("Rent.jpg") %>"
+      window.searchBgUrl = "<%= image_url("searchBg.jpg") %>"
+      window.footerUrl = "<%= image_url("footer.png") %>"
+    </script>
+
+
   </head>
 
   <body>
