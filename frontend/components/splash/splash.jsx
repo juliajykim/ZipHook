@@ -1,16 +1,17 @@
 import React from "react";
-import SearchBarContainer from "../components/search/search_bar_container";
 import { Link } from "react-router-dom";
-import Footer from "./footer/footer";
+import Footer from "../footer/footer";
 
-const Main = (props) => {
+const Splash = (props) => {
   return (
     <div className=" main-search-wrapper">
       <img src={window.searchBgUrl} className="search-background" />
       <div className="main-search">
         <div className="search-slogan"> Change starts here </div>
         <div className="search-bar-container">
-          <h1>SearchBar Goes here</h1>
+          <h1 style={{ border: "10px solid red", color: "white" }}>
+            SearchBar Goes here
+          </h1>
           {/* <SearchBarContainer /> */}
         </div>
       </div>
@@ -24,7 +25,9 @@ const Main = (props) => {
         <Link to="/buy">
           <img src={window.buyimgURL} className="options-img" />
           <h4>Buy a home</h4>
-          <p> Find your place with an immersive photo experience with Zip </p>
+          <p className="splash-card-content">
+            Find your place with an immersive photo experience with Zip{" "}
+          </p>
           <div>
             <button className="options-btn">Search Homes</button>
           </div>
@@ -32,7 +35,7 @@ const Main = (props) => {
         <Link to="/sell">
           <img src={window.sellimgURL} className="options-img" />
           <h4>Sell a home</h4>
-          <p>
+          <p className="splash-card-content">
             Sell your home with confidence Zillow is making it simpler to sell
             your home and move forward.
           </p>
@@ -43,7 +46,7 @@ const Main = (props) => {
         <Link to="/rent">
           <img src={window.rentimgURL} className="options-img" />
           <h4>Rent a home</h4>
-          <p>
+          <p className="splash-card-content">
             We’re creating a seamless online experience – from shopping on the
             largest rental network
           </p>
@@ -52,9 +55,9 @@ const Main = (props) => {
           </div>
         </Link>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
 
-export default Main;
+export default Splash;

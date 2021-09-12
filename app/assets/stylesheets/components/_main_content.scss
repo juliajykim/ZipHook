@@ -1,4 +1,6 @@
-.main-content-slogan-container{
+@import "../base/colors.scss";
+
+.main-content-slogan-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,22 +12,22 @@
   line-height: 24px;
 }
 
-.main-content-slogan{
+.main-content-slogan {
   display: block;
   box-sizing: content-box;
   text-align: center;
   height: 130px;
   width: 25%;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 21px;
   font-weight: 545;
 }
 
-.options-wrapper{
+.options-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  >a{
+  > a {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -37,32 +39,33 @@
     border-radius: 5px;
     box-shadow: 0px 5px 15px rgba(171, 170, 170, 0.5);
     transition: transform 250ms;
-     &:hover{
+    &:hover {
       transform: scale(1.1);
-      .options-btn{
+      .options-btn {
         background-color: rgb(0, 106, 255);
         color: white;
       }
     }
-    >h4{
+    > h4 {
       font-family: serif;
       font-size: 24px;
       font-weight: 700;
       text-align: center;
+      margin: 10px;
     }
-    >p{
+    > p {
       font-family: sans-serif;
       font-size: 16px;
       text-align: center;
     }
-    >div{
+    > div {
       display: flex;
       justify-content: center;
     }
   }
 }
 
-.options-btn{
+.options-btn {
   background-color: white;
   width: 35%;
   padding: 10px;
@@ -71,7 +74,11 @@
   color: rgb(0, 106, 255);
   font-size: medium;
   transition: transform 250ms;
- 
 }
 
-
+.splash-card-content {
+  margin: 0 40px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
