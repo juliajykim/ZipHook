@@ -6,7 +6,7 @@ import {
   useComponentDidMount,
   useComponentWillUnMount,
 } from "../../util/hook_util";
-import { closeModal } from "../../actions/modal_actions";
+import { openModal, closeModal } from "../../actions/modal_actions";
 
 const SessionForm = (props) => {
   const errors = useSelector((state) => state.errors.session);
@@ -55,14 +55,21 @@ const SessionForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formType === "login") {
-      dispatch(login(user));
+      dispatch(login(user)).then(dispatch(closeModal()));
     } else {
-      dispatch(signup(user));
+      dispatch(signup(user)).then(dispatch(closeModal()));
     }
   };
 
   const otherForm = () => {
     return formType == "login" ? <p>Sign Up</p> : <p>Login</p>;
+  };
+
+  const handleDemoUser = (e) => {
+    e.preventDefault();
+    const demoUser = { email: "demo@zip.com", password: "password" };
+    debugger;
+    dispatch(login(demoUser)).then(dispatch(closeModal()));
   };
 
   return (
@@ -73,6 +80,24 @@ const SessionForm = (props) => {
           X
         </div>
       </header>
+
+      <div>
+        {formType == "login" ? (
+          <div className="session-form-option">
+            <div className="current-from">{formType}</div>
+            <div>
+              <a onClick={() => dispatch(openModal("signup"))}> New Account </a>
+            </div>
+          </div>
+        ) : (
+          <div className="session-form-option">
+            <div>
+              <a onClick={() => dispatch(openModal("login"))}> Log in </a>
+            </div>
+            <div className="current-from"> New Account</div>
+          </div>
+        )}
+      </div>
 
       <form className="session-form" onSubmit={handleSubmit}>
         <div className="input-section">
@@ -104,6 +129,9 @@ const SessionForm = (props) => {
         <div className="session-btn">
           <button>{formType == "login" ? "Submit" : "Sign Up"}</button>
           <p> Or connect with:</p>
+          <button onClick={handleDemoUser} id="demo-btn">
+            Sign in with Demo User
+          </button>
         </div>
       </form>
     </div>
