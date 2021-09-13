@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_08_214632) do
+ActiveRecord::Schema.define(version: 2021_09_12_233411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "house_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["house_id"], name: "index_cities_on_house_id"
+  end
+
+  create_table "houses", force: :cascade do |t|
+    t.string "address", null: false
+    t.integer "city_id", null: false
+    t.integer "state_id", null: false
+    t.integer "zipcode", null: false
+    t.integer "price", null: false
+    t.integer "beds", null: false
+    t.integer "baths", null: false
+    t.integer "sqft", null: false
+    t.boolean "is_rent", default: true, null: false
+    t.float "lat", null: false
+    t.float "lng", null: false
+    t.text "description"
+    t.integer "yr_built"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_houses_on_city_id"
+    t.index ["state_id"], name: "index_houses_on_state_id"
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "house_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["house_id"], name: "index_states_on_house_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
