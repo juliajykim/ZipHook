@@ -48,12 +48,13 @@ const SessionForm = (props) => {
   };
 
   const handleSubmit = (e) => {
-    debugger;
     e.preventDefault();
     if (formType === "login") {
       dispatch(login(user)).then(dispatch(closeModal));
+      dispatch(clearErrors());
     } else {
       dispatch(signup(user)).then(dispatch(closeModal));
+      dispatch(clearErrors());
     }
   };
 
@@ -64,21 +65,24 @@ const SessionForm = (props) => {
   };
 
   const onClick = () => {
-    debugger;
+    dispatch(clearErrors());
     if (formType === "login") {
-      dispatch(clearErrors());
       dispatch(openModal("signup"));
     } else {
-      dispatch(clearErrors());
       dispatch(openModal("login"));
     }
+  };
+
+  const onClose = () => {
+    dispatch(clearErrors());
+    dispatch(closeModal());
   };
 
   return (
     <div className="session-form-container">
       <header>
         <h2>Welcome to Zip🏡 </h2>
-        <div onClick={() => dispatch(closeModal())} className="close-x">
+        <div onClick={onClose} className="close-x">
           X
         </div>
       </header>

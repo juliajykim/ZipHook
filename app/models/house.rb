@@ -25,4 +25,6 @@ class House < ApplicationRecord
 
   belongs_to :city
   belongs_to :state
+
+  has_one_attached :photo
 end

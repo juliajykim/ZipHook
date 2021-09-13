@@ -22,7 +22,7 @@ class User < ApplicationRecord
   #   end
   # end
 
-  has_one_attached :profile
+  has_one_attached :profile_photo
 
   has_many :saves,
     foreign_key: :user_id,
