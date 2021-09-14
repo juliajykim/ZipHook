@@ -16,9 +16,7 @@ const HouseItem = (props) => {
     );
 
   const onClick = () => {
-    debugger;
     history.push(`zips/${house.id}`);
-    debugger;
   };
 
   return (
