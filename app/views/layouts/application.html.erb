@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
     <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials[:google][:api_key]}" %>
       <script src="https://kit.fontawesome.com/38b2222885.js" crossorigin="anonymous"></script>
       <script type="text/javascript">
       window.logoURL = "<%= image_url("logo.png") %>"
@@ -15,6 +16,7 @@
       window.rentimgURL= "<%= image_url("Rent.jpg") %>"
       window.searchBgUrl = "<%= image_url("searchBg.jpg") %>"
       window.footerUrl = "<%= image_url("footer.png") %>"
+
     </script>
 
 

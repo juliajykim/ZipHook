@@ -15,10 +15,7 @@ const HousesIndex = () => {
   const mappedHouses = houses.map((house, i) => {
     return (
       <div className="property-index-container">
-        <HouseItem 
-          key={`house-${i}`} 
-          house={house} 
-        />
+        <HouseItem key={`house-${i}`} house={house} />
       </div>
     );
   });

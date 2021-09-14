@@ -19,7 +19,7 @@ const HouseItem = (props) => {
         <img src={house.photoUrl} alt="house-thumbnail" />
       </div>
       <div className="heart-container">
-        <button id="heart">{heart}</button>
+        <button id="heart">{heart()}</button>
       </div>
       <div className="property-thumbnail-info">
         <div>
