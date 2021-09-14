@@ -24,3 +24,11 @@ export const fetchAllHouses = () => {
     });
   };
 };
+
+export const fetchHouse = (houseId) => {
+  return (dispatch) => {
+    HousesAPIUtil.fetchHouse(houseId).then((house) => {
+      return dispatch(receiveHouse(house));
+    });
+  };
+};

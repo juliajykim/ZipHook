@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 const HouseItem = (props) => {
   const [isSaved, setIsSaved] = useState(false);
   const house = props.house;
   const currentUser = useSelector((state) => state.session.currentUser);
+  const history = useHistory();
 
   const heart = () =>
     isSaved && currentUser ? (
@@ -13,8 +15,14 @@ const HouseItem = (props) => {
       <a className="far fa-heart"></a>
     );
 
+  const onClick = () => {
+    debugger;
+    history.push(`zips/${house.id}`);
+    debugger;
+  };
+
   return (
-    <div className="property-thumbnail-container">
+    <div className="property-thumbnail-container" onClick={onClick}>
       <div className="property-thumbnail">
         <img src={house.photoUrl} alt="house-thumbnail" />
       </div>

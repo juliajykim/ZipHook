@@ -5,6 +5,7 @@ import HeaderNav from "./Navs/header_nav";
 import Modal from "./Modal/modal";
 import Splash from "./Splash/splash";
 import Search from "./Search/search";
+import HouseShow from "./Houses/house_show";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <HeaderNav />
       <Switch>
         {/* <ProtectedRoute exact path='/zips/new' component={}/> */}
+        <Route path="/zips/:id" component={HouseShow} />
         <Route path="/zips" component={Search} />
         <Route exact path="/" component={Splash} />
       </Switch>

@@ -13,12 +13,13 @@
  *= require_self
  */
 
- @import "base/reset";
+@import "base/reset";
 
-// Core
+// base
 @import "base/colors";
 @import "base/fonts";
 @import "base/layout";
+@import "base/variables";
 
 // Components
 @import "components/*";

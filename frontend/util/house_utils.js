@@ -5,9 +5,10 @@ export const fetchAllHouses = (houses) => {
   });
 };
 
-export const fetchHouse = (house) => {
+export const fetchHouse = (houseId) => {
+  debugger;
   return $.ajax({
     method: "GET",
-    url: `api/house/${house.id}`,
+    url: `api/houses/${houseId}`,
   });
 };

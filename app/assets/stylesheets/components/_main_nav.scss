@@ -1,23 +1,26 @@
+@import "../base/variables";
+
 .NavHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100vw;
-  height: 80px;
+  height: $header-height;
   border-bottom: solid 1px lightgray;
 }
 
-.NavHeader-left, .NavHeader-right{
+.NavHeader-left,
+.NavHeader-right {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.NavHeader-left{
+.NavHeader-left {
   margin-left: 10%;
 }
 
-.NavHeader-right{
+.NavHeader-right {
   margin-right: 10%;
 }
 
@@ -28,14 +31,17 @@
   margin: 20px;
 }
 
-.logo-container{
+.logo-container {
   display: flex;
   justify-content: center;
 }
 
-.login-btn{
+.login-btn {
   padding: 15px;
-  &:active, &:hover{
+  &:active,
+  &:hover {
     border: 3px solid rgb(123, 160, 213);
   }
 }
+
+//do webkit below
