@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { fetchAllCities } from "../../actions/cities_actions";
+import HouseShow from "./house_show";
 
 const HouseItem = (props) => {
   //hooks

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { closeModal, openModal } from "../../actions/modal_actions";
 import { fetchHouse } from "../../util/house_utils";
 import { fetchAllCities } from "../../actions/cities_actions";
+import MiniMap from "../Map/mini_map";
 
 const HouseShow = (props) => {
   //Hooks
   const history = useHistory();
+  const location = useLocation();
   const dispatch = useDispatch();
   const [house, setHouse] = useState({});
 
@@ -20,14 +22,9 @@ const HouseShow = (props) => {
     fetchHouse(houseId).then((house) => setHouse(house));
   }, []);
 
-  const price = `$${house.price}`;
   const address = `${house.address}, ${house.city}, ${house.state} ${house.zipcode}`;
-  const beds = `${house.beds} bd`;
-  const baths = `${house.baths} ba`;
-  const sqft = `${house.sqft} sqft`;
 
-  debugger;
-  return house ? (
+  return !jQuery.isEmptyObject(house) ? (
     <div className="modal-background-property" onClick={() => history.goBack()}>
       <div
         className="modal-child-property"
@@ -63,17 +60,15 @@ const HouseShow = (props) => {
               <div>{address}</div>
             </div>
             <div className="property-info-minimap">
-              <h1 style={{ border: "10px solid red", padding: "100px" }}>
+              {/* <h1 style={{ border: "10px solid red", padding: "100px" }}>
                 Mininmap Goes Here
-              </h1>
-              {/* <MiniMap property={property} /> */}
+              </h1> */}
+              <MiniMap house={house} />
             </div>
 
             <div className="property-overview">
               <h1>OverView</h1>
-              <h2>
-                {house.description} {house.description}
-              </h2>
+              <h2>{house.description}</h2>
             </div>
           </div>
         </div>
