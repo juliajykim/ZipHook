@@ -13,7 +13,6 @@ const HouseItem = (props) => {
   const [isSaved, setIsSaved] = useState(false);
   const house = props.house;
   const currentUser = useSelector((state) => state.session.currentUser);
-  const cities = useSelector((state) => state.entities.cities);
 
   const heart = () =>
     isSaved && currentUser ? (

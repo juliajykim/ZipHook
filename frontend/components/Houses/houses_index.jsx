@@ -13,11 +13,6 @@ const HousesIndex = () => {
   //componentDidMount
   useEffect(() => dispatch(fetchAllHouses()), []);
 
-  //FetchCities
-  useEffect(() => {
-    dispatch(fetchAllCities());
-  }, []);
-
   const mappedHouses = houses.map((house, i) => {
     return (
       <div className="property-index-container">

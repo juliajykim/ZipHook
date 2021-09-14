@@ -20,20 +20,13 @@ const HouseShow = (props) => {
     fetchHouse(houseId).then((house) => setHouse(house));
   }, []);
 
-  //Fetch Cities
-  useEffect(() => {
-    dispatch(fetchAllCities());
-  }, []);
-
   const price = `$${house.price}`;
   const address = `${house.address}, ${house.city}, ${house.state} ${house.zipcode}`;
   const beds = `${house.beds} bd`;
   const baths = `${house.baths} ba`;
   const sqft = `${house.sqft} sqft`;
 
-  const onClose = () => {
-    debugger;
-  };
+  debugger;
   return house ? (
     <div className="modal-background-property" onClick={() => history.goBack()}>
       <div

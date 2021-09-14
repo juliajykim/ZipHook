@@ -4,7 +4,6 @@ import housesReducer from "./houses_reducer";
 
 const entitiesReducer = combineReducers({
   houses: housesReducer,
-  cities: citiesReducer,
 });
 
 export default entitiesReducer;
