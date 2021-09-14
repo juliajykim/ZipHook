@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import SessionForm from "../session_form/session_form";
+import SessionForm from "../Session_form/session_form";
 import { closeModal } from "../../actions/modal_actions";
 import { useSelector } from "react-redux";
 

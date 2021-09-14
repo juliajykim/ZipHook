@@ -1,9 +1,5 @@
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect } from "react";
+export const customDidMount = (callback) => useEffect(() => callback(), []);
 
-export const useComponentDidMount = (callback) => {
-  return useEffect(() => callback, []);
-};
-
-export const useComponentWillUnMount = (callback) => {
-  return useEffect(() => () => callback, []);
-};
+export const useComponentWillUnmount = (callback) =>
+  useEffect(() => () => callback(), []);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import HouseItem from "./house_item";
-import { useComponentDidMount } from "../../util/hook_util";
+import { customDidMount } from "../../util/hook_util";
 import { useDispatch } from "react-redux";
 import { fetchAllHouses } from "../../actions/houses_actions";
 
@@ -14,8 +14,11 @@ const HousesIndex = () => {
 
   const mappedHouses = houses.map((house, i) => {
     return (
-      <div>
-        <HouseItem house={house} key={`house-${i}`} />
+      <div className="property-index-container">
+        <HouseItem 
+          key={`house-${i}`} 
+          house={house} 
+        />
       </div>
     );
   });
