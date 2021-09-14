@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
 const MiniMap = (props) => {
-  debugger;
   const { lat, lng } = props.house;
   const mapRef = useRef(null);
   const mapOptions = {

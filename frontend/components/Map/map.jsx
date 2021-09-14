@@ -1,7 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import MarkerManager from "../../util/marker_manager";
 
 const Map = (props) => {
   const mapRef = useRef(null);
+  const [map, setMap] = useState({});
+  const [MarkerManager, setMarkerManager] = useState({});
+
   const mapOptions = {
     center: { lat: 40.740879, lng: -73.987135 },
     zoom: 13,
@@ -21,12 +25,24 @@ const Map = (props) => {
   };
 
   const initMap = useCallback(() => {
-    new window.google.maps.Map(mapRef.current, mapOptions);
+    setMap({ map: new window.google.maps.Map(mapRef.current, mapOptions) });
   }, [mapRef]);
 
   useEffect(() => {
     initMap();
   }, [initMap]);
+
+  useEffect(
+    () => () => {
+      initMarker();
+    },
+    [initMarker]
+  );
+
+  const initMarker = useCallback(() => {
+    debugger;
+    new MarkerManager(map);
+  });
 
   return <div id="map-container" ref={mapRef} />;
 };

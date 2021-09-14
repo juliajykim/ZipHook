@@ -6,12 +6,8 @@ import { useDispatch } from "react-redux";
 import { fetchAllHouses } from "../../actions/houses_actions";
 import { fetchAllCities } from "../../actions/cities_actions";
 
-const HousesIndex = () => {
-  const houses = useSelector((state) => Object.values(state.entities.houses));
-  const dispatch = useDispatch();
-
-  //componentDidMount
-  useEffect(() => dispatch(fetchAllHouses()), []);
+const HousesIndex = (props) => {
+  const houses = Object.values(props.houses);
 
   const mappedHouses = houses.map((house, i) => {
     return (
