@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { closeModal, openModal } from "../../actions/modal_actions";
 import { fetchHouse } from "../../util/house_utils";
+import { fetchAllCities } from "../../actions/cities_actions";
 
 const HouseShow = (props) => {
   //Hooks
@@ -13,13 +14,15 @@ const HouseShow = (props) => {
 
   //Props
   const houseId = props.match.params.id;
-  const fetched = useSelector((state) => {
-    state.entities.houses[houseId];
-  });
 
   //FetchHouse when componentDidMount
   useEffect(() => {
     fetchHouse(houseId).then((house) => setHouse(house));
+  }, []);
+
+  //Fetch Cities
+  useEffect(() => {
+    dispatch(fetchAllCities());
   }, []);
 
   const price = `$${house.price}`;

@@ -9,7 +9,7 @@ const housesReducer = (state = {}, action) => {
     case RECEIVE_HOUSE:
       return { ...state, [action.house.id]: action.house };
     default:
-      return {};
+      return state;
   }
 };
 

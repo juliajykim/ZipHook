@@ -1,6 +1,7 @@
 class Api::HousesController < ApplicationController
   def index
     @houses = House.all
+    @cities = City.all
     render :index
   end
 
