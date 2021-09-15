@@ -14,7 +14,6 @@ class MarkerManager {
     houses
       .filter((house) => !this.markers[house.id])
       .forEach((newHouse) => this.createMarkerFromHouse(newHouse));
-    console.log("time to update!");
 
     //remove marker if a house is not in state
     Object.keys(this.markers)
@@ -27,7 +26,7 @@ class MarkerManager {
 
     const contentStr = `<div style="display: flex; justify-content: space-between;">
         <div>
-          <img src="${newHouse.photoUrls}" style= 'width: 70px; height:70px; padding-right:15px;'></img>
+          <img src="${newHouse.photoUrl}" style= 'width: 70px; height:70px; padding-right:15px;'></img>
         </div>
         <div className = "infoWindow-right">
           <h3> $ ${newHouse.price}</h3>
