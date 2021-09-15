@@ -17,9 +17,9 @@ export const receiveHouse = (house) => {
   };
 };
 
-export const fetchAllHouses = () => {
+export const fetchAllHouses = (filters) => {
   return (dispatch) => {
-    HousesAPIUtil.fetchAllHouses().then((houses) => {
+    HousesAPIUtil.fetchAllHouses(filters).then((houses) => {
       return dispatch(receiveAllHouses(houses));
     });
   };

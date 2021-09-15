@@ -1,10 +1,19 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  Component,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import MarkerManager from "../../util/marker_manager";
+import { updateFilter } from "../../actions/filter_action";
+import { useDispatch } from "react-redux";
 
 const Map = (props) => {
+  const dispatch = useDispatch();
   const mapRef = useRef(null);
-  const [map, setMap] = useState({});
-  const [MarkerManager, setMarkerManager] = useState({});
+  let map;
+  let markerManager = new MarkerManager({});
 
   const mapOptions = {
     center: { lat: 40.740879, lng: -73.987135 },
@@ -24,25 +33,37 @@ const Map = (props) => {
     ],
   };
 
+  //initialize map
   const initMap = useCallback(() => {
-    setMap({ map: new window.google.maps.Map(mapRef.current, mapOptions) });
+    map = new google.maps.Map(mapRef.current, mapOptions);
   }, [mapRef]);
 
   useEffect(() => {
     initMap();
   }, [initMap]);
 
-  useEffect(
-    () => () => {
-      initMarker();
-    },
-    [initMarker]
-  );
-
-  const initMarker = useCallback(() => {
-    debugger;
-    new MarkerManager(map);
+  //componentDidMount
+  useEffect(() => {
+    if (!jQuery.isEmptyObject(map)) {
+      markerManager = new MarkerManager(map);
+    }
   });
+
+  //ComponentDidUpdate;
+  useEffect(() => {
+    markerManager.updateMarkers(props.houses);
+  }, [markerManager]);
+
+  useEffect(() => {
+    google.maps.event.addListener(map, "idle", () => {
+      const { north, south, east, west } = map.getBounds().toJSON();
+      const bounds = {
+        northEast: { lat: north, lng: east },
+        southWest: { lat: south, lng: west },
+      };
+      dispatch(updateFilter("bounds", bounds));
+    });
+  }, [map]);
 
   return <div id="map-container" ref={mapRef} />;
 };

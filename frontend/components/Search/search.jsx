@@ -4,14 +4,14 @@ import { useSelector } from "react-redux";
 import { fetchAllHouses } from "../../actions/houses_actions";
 import HousesIndex from "../Houses/houses_index";
 import Map from "../Map/map";
+import { updateBounds } from "../../actions/filter_action";
 
 const Search = (props) => {
   //hooks
   const dispatch = useDispatch();
   const houses = useSelector((state) => state.entities.houses);
-
-  //componentDidMount
-  useEffect(() => dispatch(fetchAllHouses()), []);
+  const filters = useSelector((state) => state.ui.filters);
+  useEffect(() => dispatch(fetchAllHouses(filters)), []);
 
   return !jQuery.isEmptyObject(houses) ? (
     <div>
@@ -20,7 +20,7 @@ const Search = (props) => {
       </div>
       <div className="listing-page">
         <div className="listing-page-left">
-          <Map houses={houses} />
+          <Map houses={Object.values(houses)} updateBounds={updateBounds} />
         </div>
         <div className="listing-page-right">
           <h1>Listings</h1>

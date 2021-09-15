@@ -1,6 +1,7 @@
 class Api::HousesController < ApplicationController
   def index
-    @houses = House.all
+    @houses = params[:bounds] ? House.in_bounds(params[:bounds]) : House.all
+    # @houses = House.all
     @cities = City.all
     render :index
   end
@@ -8,5 +9,11 @@ class Api::HousesController < ApplicationController
   def show
     @house = House.find(params[:id])
     render "api/houses/show"
+  end
+
+  private
+
+  def house_params
+    params.require(:house).permit(:address, :city, :state, :beds, :baths, :sqft)
   end
 end
