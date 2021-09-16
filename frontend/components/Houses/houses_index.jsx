@@ -9,7 +9,7 @@ const HousesIndex = (props) => {
 
   const mappedHouses = houses.map((house, i) => {
     return (
-      <div className="property-index-container">
+      <div className="property-index-container" key={`house-${i}`}>
         <HouseItem key={`house-${i}`} house={house} />
       </div>
     );
