@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { updateFilter } from "../../actions/filter_action";
 import HousesIndex from "../Houses/houses_index";
 import Map from "../Map/map";
@@ -9,6 +10,8 @@ import MapClass from "../Map/map_class";
 const Search = (props) => {
   const dispatch = useDispatch();
   const houses = useSelector((state) => state.entities.houses);
+  const history = useHistory();
+
   return (
     <div>
       <div>
@@ -18,6 +21,7 @@ const Search = (props) => {
         <div className="listing-page-left">
           <MapClass
             dispatch={dispatch}
+            history={history}
             updateFilter={updateFilter}
             houses={Object.values(houses)}
           />

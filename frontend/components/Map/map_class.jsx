@@ -22,10 +22,8 @@ const mapOptions = {
 class MapClass extends React.Component {
   componentDidMount() {
     this.map = new google.maps.Map(this.mapNode, mapOptions);
-    this.MarkerManager = new MarkerManager(
-      this.map
-      //   this.handleMarkerClick.bind(this)
-    );
+    this.history = this.props.history;
+    this.MarkerManager = new MarkerManager(this.map, this.history);
     this.registerListeners();
     this.MarkerManager.updateMarkers(this.props.houses);
   }

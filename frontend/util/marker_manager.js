@@ -1,6 +1,7 @@
 class MarkerManager {
-  constructor(map) {
+  constructor(map, history) {
     this.map = map;
+    this.history = history;
     this.markers = {};
   }
 
@@ -36,15 +37,25 @@ class MarkerManager {
 
     const houseInfoWindow = new google.maps.InfoWindow({
       content: contentStr,
+      disableAutoPan: true,
     });
 
+    const onClick = () => {
+      this.history.push(`zips/${newHouse.id}`);
+    };
     const marker = new google.maps.Marker({
       position,
       map: this.map,
       infoWindow: houseInfoWindow,
       houseId: newHouse.id,
     });
-
+    marker.addListener("mouseover", () =>
+      marker.infoWindow.open(this.map, marker)
+    );
+    marker.addListener("mouseout", () =>
+      marker.infoWindow.close(this.map, marker)
+    );
+    marker.addListener("click", onClick);
     this.markers[marker.houseId] = marker;
   }
 
