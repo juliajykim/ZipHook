@@ -12,11 +12,11 @@ class Api::HousesController < ApplicationController
   end
 
   def create
+    city = "%#{params[:house][:city].strip.split(//).join("%")}%"
+    state = "%#{params[:house][:state].strip.split(//).join("%")}%"
     debugger
-    city = "%#{params[:house][:city].split(//).join("%")}%"
-    state = "%#{params[:house][:state].split(//).join("%")}%"
-    city_id = City.where("UPPER(name) LIKE UPPER(?)", city).pluck(:id)[0]
-    state_id = State.where("UPPER(name) LIKE UPPER(?)", state).pluck(:id)[0]
+    city_id = City.where("UPPER(TRIM(name)) LIKE UPPER(?)", city).pluck(:id)[0]
+    state_id = State.where("UPPER(TRIM(name)) LIKE UPPER(?)", state).pluck(:id)[0]
     params[:house][:city_id] = city_id
     params[:house][:state_id] = state_id
     house = House.new(house_params)

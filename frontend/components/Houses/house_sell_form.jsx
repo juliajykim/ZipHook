@@ -5,6 +5,7 @@ import { addNewHouse } from "../../actions/houses_actions";
 const HouseSellForm = (props) => {
   const [currState, setCurrState] = useState({});
   const [photoFile, setPhotoFile] = useState(null);
+  const [photoUrl, setPhotoUrl] = useState();
   const dispatch = useDispatch();
 
   const onInput = (e, type) => {
@@ -13,7 +14,15 @@ const HouseSellForm = (props) => {
   };
 
   const handleFile = (e) => {
-    setPhotoFile(e.currentTarget.files[0]);
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      setPhotoFile(file);
+      setPhotoUrl(fileReader.result);
+    };
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -36,7 +45,9 @@ const HouseSellForm = (props) => {
     dispatch(addNewHouse(formData));
   };
 
-  console.log(currState);
+  console.log(photoUrl);
+  const preview = photoUrl ? <img src={photoUrl} /> : null;
+
   return (
     <div>
       FORM!!!
@@ -167,6 +178,8 @@ const HouseSellForm = (props) => {
           Photos
           <input type="file" onChange={(e) => handleFile(e)} />
         </label>
+
+        <h3>img preview {preview}</h3>
         <button type="submit">Create House!</button>
       </form>
     </div>
