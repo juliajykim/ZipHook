@@ -8,14 +8,10 @@ const HousesIndex = (props) => {
   const houses = useSelector((state) => Object.values(state.entities.houses));
 
   const mappedHouses = houses.map((house, i) => {
-    return (
-      <div className="property-index-container" key={`house-${i}`}>
-        <HouseItem key={`house-${i}`} house={house} />
-      </div>
-    );
+    return <HouseItem key={`house-${i}`} house={house} />;
   });
 
-  return <div>{mappedHouses}</div>;
+  return <div className="property-index-container">{mappedHouses}</div>;
 };
 
 export default HousesIndex;

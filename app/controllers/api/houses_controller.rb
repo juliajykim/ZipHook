@@ -20,6 +20,8 @@ class Api::HousesController < ApplicationController
     params[:house][:city_id] = city_id
     params[:house][:state_id] = state_id
     house = House.new(house_params)
+    house.city = City.find_by(id: city_id)
+    house.state = State.find_by(id: state_id)
 
     if house.save
       render :show

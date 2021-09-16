@@ -8,17 +8,15 @@ const HouseSellForm = (props) => {
   const dispatch = useDispatch();
 
   const onInput = (e, type) => {
-    debugger;
     e.preventDefault();
     setCurrState({ ...currState, [type]: e.currentTarget.value });
   };
 
   const handleFile = (e) => {
-    setPhotoFile({ photoFile: e.currentTarget.files[0] });
+    setPhotoFile(e.currentTarget.files[0]);
   };
 
   const handleSubmit = (e) => {
-    debugger;
     e.preventDefault();
     const formData = new FormData();
     formData.append("house[address]", currState.address);

@@ -6,6 +6,7 @@ import { fetchAllCities } from "../../actions/cities_actions";
 import HouseShow from "./house_show";
 
 const HouseItem = (props) => {
+  debugger
   //hooks
   const history = useHistory();
   const dispatch = useDispatch();
