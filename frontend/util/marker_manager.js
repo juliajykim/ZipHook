@@ -43,18 +43,25 @@ class MarkerManager {
     const onClick = () => {
       this.history.push(`zips/${newHouse.id}`);
     };
+
+    const mouseOver = () => {
+      marker.infoWindow.open(this.map, marker);
+      marker.setIcon("http://maps.google.com/mapfiles/ms/icons/blue-dot.png");
+    };
+    const mouseOut = () => {
+      marker.infoWindow.close(this.map, marker);
+      marker.setIcon(null);
+    };
     const marker = new google.maps.Marker({
       position,
       map: this.map,
       infoWindow: houseInfoWindow,
       houseId: newHouse.id,
     });
-    marker.addListener("mouseover", () =>
-      marker.infoWindow.open(this.map, marker)
-    );
-    marker.addListener("mouseout", () =>
-      marker.infoWindow.close(this.map, marker)
-    );
+    marker.addListener("mouseover", mouseOver);
+
+    marker.addListener("mouseout", mouseOut);
+
     marker.addListener("click", onClick);
     this.markers[marker.houseId] = marker;
   }
