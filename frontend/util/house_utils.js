@@ -12,3 +12,14 @@ export const fetchHouse = (houseId) => {
     url: `api/houses/${houseId}`,
   });
 };
+
+export const createHouse = (data) => {
+  debugger; 
+  return $.ajax({
+    method: "POST",
+    url: "api/houses",
+    data,
+    contentType: false,
+    processData: false
+  });
+};

@@ -28,6 +28,8 @@ class House < ApplicationRecord
 
   has_one_attached :photo
 
+  has_many_attached :photos
+
   def self.in_bounds(bounds)
     # google map bounds will be in the following format:
     # {

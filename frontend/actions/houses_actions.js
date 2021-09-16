@@ -32,3 +32,12 @@ export const fetchHouse = (houseId) => {
     });
   };
 };
+
+export const addNewHouse = (formData) => {
+  debugger;
+  return (dispatch) => {
+    HousesAPIUtil.createHouse(formData).then((house) => {
+      return dispatch(receiveHouse(house));
+    });
+  };
+};

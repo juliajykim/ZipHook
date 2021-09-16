@@ -13,7 +13,7 @@ const HeaderNav = () => {
       <div className="NavHeader-left">
         <Link to="/zips"> Buy </Link>
         <Link to="/buy"> Rent </Link>
-        <Link to="/buy"> Sell </Link>
+        <Link to="/sell"> Sell </Link>
         <Link to="/buy"> AgentFinder </Link>
       </div>
       <Link to="/" className="logo-container">
