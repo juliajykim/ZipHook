@@ -26,13 +26,13 @@ class Api::HousesController < ApplicationController
     if house.save
       render :show
     else
-      render json: house.errors.full_messages
+      render json: house.errors.full_messages, state: 422
     end
   end
 
   private
 
   def house_params
-    params.require(:house).permit(:address, :city_id, :state_id, :zipcode, :price, :beds, :baths, :sqft, :is_rent, :lat, :lng, :description, :yr_built, :photo)
+    params.require(:house).permit(:address, :city_id, :state_id, :zipcode, :price, :beds, :baths, :sqft, :is_rent, :lat, :lng, :description, :yr_built, :photo, photos: [])
   end
 end

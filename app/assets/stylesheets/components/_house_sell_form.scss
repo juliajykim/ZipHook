@@ -1,0 +1,25 @@
+.house-sell-form-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.dripzone-container {
+  height: 100vh;
+  border: 5px solid blueviolet;
+}
+
+.house-sell-input-container {
+  border: 5px solid goldenrod;
+  > form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    input[type="text"] {
+      border: 5px solid red;
+      margin: 10px;
+    }
+    label {
+      width: 20%;
+    }
+  }
+}

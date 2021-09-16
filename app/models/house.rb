@@ -23,6 +23,9 @@ class House < ApplicationRecord
   validates :address, :city_id, :state_id, :zipcode, :price, :beds, :baths, :sqft, :lat, :lng, presence: true
   validates :is_rent, inclusion: { in: [true, false] }
 
+  validate :ensure_photo
+  validate :ensure_photos
+
   belongs_to :city
   belongs_to :state
 
@@ -30,13 +33,19 @@ class House < ApplicationRecord
 
   has_many_attached :photos
 
+  def ensure_photo
+    unless self.photo.attached?
+      errors[:photo] << "Photo must be attached!"
+    end
+  end
+
+  def ensure_photos
+    unless self.photos.attached?
+      errors[:photos] << "Photo must be attached!"
+    end
+  end
+
   def self.in_bounds(bounds)
-    # google map bounds will be in the following format:
-    # {
-    #   "northEast"=> {"lat"=>"37.80971", "lng"=>"-122.39208"},
-    #   "southWest"=> {"lat"=>"37.74187", "lng"=>"-122.47791"}
-    # }
-    #... query logic goes here
     self.where("lat < ?", bounds[:northEast][:lat])
       .where("lat > ?", bounds[:southWest][:lat])
       .where("lng < ?", bounds[:northEast][:lng])
