@@ -14,12 +14,11 @@ export const fetchHouse = (houseId) => {
 };
 
 export const createHouse = (data) => {
-  debugger; 
   return $.ajax({
     method: "POST",
     url: "api/houses",
     data,
     contentType: false,
-    processData: false
+    processData: false,
   });
 };

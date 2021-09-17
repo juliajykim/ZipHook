@@ -14,20 +14,6 @@ const HouseSellForm = (props) => {
     setCurrState({ ...currState, [type]: e.currentTarget.value });
   };
 
-  const handleFile = (file) => {
-    debugger;
-    // const file = e.currentTarget.files[0];
-    const fileReader = new FileReader();
-    fileReader.onloadend = () => {
-      setPhotoFile(file);
-      setPhotoUrl(fileReader.result);
-      debugger;
-    };
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
-  };
-
   const handleFiles = (files) => {
     setPhotoFiles(files);
   };
@@ -76,6 +62,7 @@ const HouseSellForm = (props) => {
                 type="text"
                 value={currState.address || ""}
                 onChange={(e) => onInput(e, "address")}
+                required
               />
             </label>
             <label>
@@ -84,6 +71,7 @@ const HouseSellForm = (props) => {
                 type="text"
                 value={currState.city || ""}
                 onChange={(e) => onInput(e, "city")}
+                required
               />
             </label>
             <label>
@@ -92,6 +80,7 @@ const HouseSellForm = (props) => {
                 type="text"
                 value={currState.state}
                 onChange={(e) => onInput(e, "state")}
+                required
               />
             </label>
             <label>
@@ -100,6 +89,7 @@ const HouseSellForm = (props) => {
                 type="text"
                 value={currState.zipcode}
                 onChange={(e) => onInput(e, "zipcode")}
+                required
               />
             </label>
             <label>
@@ -108,6 +98,7 @@ const HouseSellForm = (props) => {
                 type="text"
                 value={currState.price}
                 onChange={(e) => onInput(e, "price")}
+                required
               />
             </label>
 
@@ -117,6 +108,7 @@ const HouseSellForm = (props) => {
                 type="text"
                 value={currState.baths}
                 onChange={(e) => onInput(e, "baths")}
+                required
               />
             </label>
 
@@ -126,6 +118,7 @@ const HouseSellForm = (props) => {
                 type="text"
                 value={currState.beds}
                 onChange={(e) => onInput(e, "beds")}
+                required
               />
             </label>
 
@@ -135,6 +128,7 @@ const HouseSellForm = (props) => {
                 type="text"
                 value={currState.sqft}
                 onChange={(e) => onInput(e, "sqft")}
+                required
               />
             </label>
 
@@ -144,6 +138,7 @@ const HouseSellForm = (props) => {
                 type="radio"
                 value={true}
                 onChange={(e) => onInput(e, "isRent")}
+                required
               />
             </label>
 
@@ -153,6 +148,7 @@ const HouseSellForm = (props) => {
                 type="radio"
                 value={false}
                 onChange={(e) => onInput(e, "isRent")}
+                required
               />
             </label>
 
@@ -162,6 +158,7 @@ const HouseSellForm = (props) => {
                 type="text"
                 value={currState.lat}
                 onChange={(e) => onInput(e, "lat")}
+                required
               />
             </label>
 
@@ -171,6 +168,7 @@ const HouseSellForm = (props) => {
                 type="text"
                 value={currState.lng}
                 onChange={(e) => onInput(e, "lng")}
+                required
               />
             </label>
 
@@ -180,6 +178,7 @@ const HouseSellForm = (props) => {
                 type="text"
                 value={currState.description}
                 onChange={(e) => onInput(e, "description")}
+                required
               />
             </label>
 
@@ -189,6 +188,7 @@ const HouseSellForm = (props) => {
                 type="text"
                 value={currState.yrBuilt}
                 onChange={(e) => onInput(e, "yrBuilt")}
+                required
               />
             </label>
 

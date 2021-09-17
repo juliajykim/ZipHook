@@ -2,6 +2,7 @@ import * as HousesAPIUtil from "../util/house_utils";
 
 export const RECEIVE_ALL_HOUSES = "RECEIVE_ALL_HOUSES";
 export const RECEIVE_HOUSE = "RECEIVE_HOUSE";
+export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
 export const receiveAllHouses = (houses) => {
   return {
@@ -14,6 +15,13 @@ export const receiveHouse = (house) => {
   return {
     type: RECEIVE_HOUSE,
     house,
+  };
+};
+
+export const receiveErrors = (errors) => {
+  return {
+    type: RECEIVE_ERRORS,
+    errors,
   };
 };
 
@@ -33,11 +41,20 @@ export const fetchHouse = (houseId) => {
   };
 };
 
-export const addNewHouse = (formData) => {
-  debugger;
+// export const addNewHouse = (formData) => {
+//   debugger;
+//   return (dispatch) => {
+//     HousesAPIUtil.createHouse(formData).then((house) => {
+//       return dispatch(receiveHouse(house));
+//     });
+//   };
+// };
+
+export const addNewHouse = (data) => {
   return (dispatch) => {
-    HousesAPIUtil.createHouse(formData).then((house) => {
-      return dispatch(receiveHouse(house));
-    });
+    return HousesAPIUtil.createHouse(data).then(
+      (house) => dispatch(receiveHouse(house)),
+      (err) => dispatch(receiveErrors(err.responseJSON))
+    );
   };
 };

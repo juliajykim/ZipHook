@@ -20,14 +20,14 @@ class Api::HousesController < ApplicationController
     state_id = State.where("UPPER(TRIM(name)) LIKE UPPER(?)", state).pluck(:id)[0]
     params[:house][:city_id] = city_id
     params[:house][:state_id] = state_id
-    house = House.new(house_params)
-    house.city = City.find_by(id: city_id)
-    house.state = State.find_by(id: state_id)
+    @house = House.new(house_params)
+    @house.city = City.find_by(id: city_id)
+    @house.state = State.find_by(id: state_id)
 
-    if house.save
-      render :show
+    if @house.save
+      render "api/houses/show"
     else
-      render json: house.errors.full_messages, state: 422
+      render json: @house.errors.full_messages, status: 422
     end
   end
 

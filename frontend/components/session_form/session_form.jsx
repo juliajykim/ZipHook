@@ -4,7 +4,7 @@ import { login, signup, clearErrors } from "../../actions/session_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
 
 const SessionForm = (props) => {
-  const errors = useSelector((state) => state.errors.session);
+  const errors = useSelector((state) => state.errors);
   const [user, setUser] = useState({ email: "", password: "" });
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
