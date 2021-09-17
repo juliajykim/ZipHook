@@ -34,6 +34,11 @@ const HouseShow = (props) => {
             <div className="modal-main-photo">
               <img src={house.photoUrl} alt="" />
             </div>
+            {house.photoUrls.slice(1).map((photo, i) => (
+              <div className="modal-photos" key={`photo-${i + 1}`}>
+                <img src={photo} className="photo" id={`photo${i + 1}`} />
+              </div>
+            ))}
           </div>
 
           <div className="property-info-container">

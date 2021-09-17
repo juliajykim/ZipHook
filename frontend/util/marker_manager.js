@@ -27,7 +27,7 @@ class MarkerManager {
 
     const contentStr = `<div style="display: flex; justify-content: space-between;">
         <div>
-          <img src="${newHouse.photoUrl}" style= 'width: 70px; height:70px; padding-right:15px;'></img>
+          <img src="${newHouse.photoUrls}" style= 'width: 70px; height:70px; padding-right:15px;'></img>
         </div>
         <div className = "infoWindow-right">
           <h3> $ ${newHouse.price}</h3>

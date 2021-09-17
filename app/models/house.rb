@@ -23,21 +23,21 @@ class House < ApplicationRecord
   validates :address, :city_id, :state_id, :zipcode, :price, :beds, :baths, :sqft, :lat, :lng, presence: true
   validates :is_rent, inclusion: { in: [true, false] }
 
-  validate :ensure_photo
+  # validate :ensure_photo
   validate :ensure_photos
 
   belongs_to :city
   belongs_to :state
 
-  has_one_attached :photo
+  # has_one_attached :photo
 
   has_many_attached :photos
 
-  def ensure_photo
-    unless self.photo.attached?
-      errors[:photo] << "Photo must be attached!"
-    end
-  end
+  # def ensure_photo
+  #   unless self.photo.attached?
+  #     errors[:photo] << "Photo must be attached!"
+  #   end
+  # end
 
   def ensure_photos
     unless self.photos.attached?

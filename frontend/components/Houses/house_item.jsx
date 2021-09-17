@@ -6,7 +6,6 @@ import { fetchAllCities } from "../../actions/cities_actions";
 import HouseShow from "./house_show";
 
 const HouseItem = (props) => {
-  debugger
   //hooks
   const history = useHistory();
   const dispatch = useDispatch();
@@ -30,7 +29,7 @@ const HouseItem = (props) => {
   return (
     <div className="property-thumbnail-container" onClick={onClick}>
       <div className="property-thumbnail">
-        <img src={house.photoUrl} alt="house-thumbnail" />
+        <img src={house.photoUrls} alt="house-thumbnail" />
       </div>
       <div className="heart-container">
         <button id="heart">{heart()}</button>

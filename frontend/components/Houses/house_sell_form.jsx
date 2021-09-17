@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addNewHouse } from "../../actions/houses_actions";
+import { useHistory } from "react-router";
+import { addNewHouse, receiveHouse } from "../../actions/houses_actions";
+import { createHouse } from "../../util/house_utils";
 import MyDropzone from "./dropzone";
 
 const HouseSellForm = (props) => {
   const [currState, setCurrState] = useState({});
   const [photoFile, setPhotoFile] = useState(null);
-  const [photoUrl, setPhotoUrl] = useState();
   const dispatch = useDispatch();
+  const history = useHistory();
   const [photoFiles, setPhotoFiles] = useState([]);
   const onInput = (e, type) => {
     e.preventDefault();
@@ -43,9 +45,12 @@ const HouseSellForm = (props) => {
       }
     }
     dispatch(addNewHouse(formData));
+    createHouse(formData).then((house) => {
+      debugger;
+      history.replace(`zips/${house.id}`);
+      dispatch(receiveHouse);
+    });
   };
-
-  const preview = photoUrl ? <img src={photoUrl} /> : null;
 
   return (
     <div>
@@ -78,7 +83,7 @@ const HouseSellForm = (props) => {
               state
               <input
                 type="text"
-                value={currState.state}
+                value={currState.state || ""}
                 onChange={(e) => onInput(e, "state")}
                 required
               />
@@ -87,7 +92,7 @@ const HouseSellForm = (props) => {
               zipcode
               <input
                 type="text"
-                value={currState.zipcode}
+                value={currState.zipcode || ""}
                 onChange={(e) => onInput(e, "zipcode")}
                 required
               />
@@ -96,7 +101,7 @@ const HouseSellForm = (props) => {
               price
               <input
                 type="text"
-                value={currState.price}
+                value={currState.price || ""}
                 onChange={(e) => onInput(e, "price")}
                 required
               />
@@ -106,7 +111,7 @@ const HouseSellForm = (props) => {
               baths
               <input
                 type="text"
-                value={currState.baths}
+                value={currState.baths || ""}
                 onChange={(e) => onInput(e, "baths")}
                 required
               />
@@ -116,7 +121,7 @@ const HouseSellForm = (props) => {
               beds
               <input
                 type="text"
-                value={currState.beds}
+                value={currState.beds || ""}
                 onChange={(e) => onInput(e, "beds")}
                 required
               />
@@ -126,7 +131,7 @@ const HouseSellForm = (props) => {
               sqft
               <input
                 type="text"
-                value={currState.sqft}
+                value={currState.sqft || ""}
                 onChange={(e) => onInput(e, "sqft")}
                 required
               />
@@ -191,13 +196,6 @@ const HouseSellForm = (props) => {
                 required
               />
             </label>
-
-            <label htmlFor="">
-              Photos
-              <input type="file" onChange={(e) => handleFile(e)} />
-            </label>
-
-            <h3>img preview {preview}</h3>
             <button type="submit">Create House!</button>
           </form>
         </div>
