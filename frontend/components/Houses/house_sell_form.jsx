@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addNewHouse } from "../../actions/houses_actions";
-import Dropzone from "react-dropzone";
 import MyDropzone from "./dropzone";
 
 const HouseSellForm = (props) => {
@@ -9,22 +8,28 @@ const HouseSellForm = (props) => {
   const [photoFile, setPhotoFile] = useState(null);
   const [photoUrl, setPhotoUrl] = useState();
   const dispatch = useDispatch();
-
+  const [photoFiles, setPhotoFiles] = useState([]);
   const onInput = (e, type) => {
     e.preventDefault();
     setCurrState({ ...currState, [type]: e.currentTarget.value });
   };
 
-  const handleFile = (e) => {
-    const file = e.currentTarget.files[0];
+  const handleFile = (file) => {
+    debugger;
+    // const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
       setPhotoFile(file);
       setPhotoUrl(fileReader.result);
+      debugger;
     };
     if (file) {
       fileReader.readAsDataURL(file);
     }
+  };
+
+  const handleFiles = (files) => {
+    setPhotoFiles(files);
   };
 
   const handleSubmit = (e) => {
@@ -46,14 +51,14 @@ const HouseSellForm = (props) => {
     if (photoFile) {
       formData.append("house[photo]", photoFile);
     }
+    if (photoFiles) {
+      for (let i = 0; i < photoFiles.length; i++) {
+        formData.append("house[photos][]", photoFiles[i]);
+      }
+    }
     dispatch(addNewHouse(formData));
   };
 
-  const onDrop = (acceptedFiles) => {
-    console.log(acceptedFiles);
-  };
-
-  console.log(photoUrl);
   const preview = photoUrl ? <img src={photoUrl} /> : null;
 
   return (
@@ -61,10 +66,10 @@ const HouseSellForm = (props) => {
       Create Listing
       <div className="house-sell-form-container">
         <div className="dripzone-container">
-          <MyDropzone handleFile={handleFile} onDrop={onDrop} />
+          <MyDropzone handleFiles={handleFiles} />
         </div>
         <div className="house-sell-input-container">
-          <form onSubmit={(e) => handleSubmit(e)}>
+          <form onSubmit={handleSubmit}>
             <label>
               Address
               <input

@@ -1,17 +1,18 @@
 class Api::HousesController < ApplicationController
   def index
-    @houses = params[:bounds] ? House.in_bounds(params[:bounds]) : House.all
+    @houses = params[:bounds] ? House.with_attached_photos.in_bounds(params[:bounds]) : House.with_attached_photos.all
     # @houses = House.all
     @cities = City.all
     render :index
   end
 
   def show
-    @house = House.find(params[:id])
+    @house = House.with_attached_photos.find(params[:id])
     render "api/houses/show"
   end
 
   def create
+    debugger
     city = "%#{params[:house][:city].strip.split(//).join("%")}%"
     state = "%#{params[:house][:state].strip.split(//).join("%")}%"
     debugger
