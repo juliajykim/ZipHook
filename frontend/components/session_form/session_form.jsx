@@ -50,10 +50,10 @@ const SessionForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formType === "login") {
-      dispatch(login(user)).then(dispatch(closeModal));
+      dispatch(login(user)).then(dispatch(closeModal()));
       dispatch(clearErrors());
     } else {
-      dispatch(signup(user)).then(dispatch(closeModal));
+      dispatch(signup(user)).then(dispatch(closeModal()));
       dispatch(clearErrors());
     }
   };
