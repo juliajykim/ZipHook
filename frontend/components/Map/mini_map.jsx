@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import MarkerManager from "../../util/marker_manager";
 
 const MiniMap = (props) => {
   const { lat, lng } = props.house;
@@ -22,7 +23,9 @@ const MiniMap = (props) => {
   };
 
   const initMap = useCallback(() => {
-    new window.google.maps.Map(mapRef.current, mapOptions);
+    const map = new window.google.maps.Map(mapRef.current, mapOptions);
+    const markerManager = new MarkerManager(map);
+    markerManager.updateMarkers([props.house]);
   }, [mapRef]);
 
   useEffect(() => {
