@@ -7,7 +7,12 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create, :show, :update]
-    resources :houses
+    resources :houses do
+      member do
+        post :save, to: "houses#saving", as: "save"
+        post :unsave, to: "houses#unsaving", as: "unsave"
+      end
+    end
     resources :cities, only: [:index]
     resources :states, only: [:index]
     resource :session, only: [:create, :destroy, :new]

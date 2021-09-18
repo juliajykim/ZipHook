@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_172537) do
+ActiveRecord::Schema.define(version: 2021_09_18_060648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,16 @@ ActiveRecord::Schema.define(version: 2021_09_13_172537) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["city_id"], name: "index_houses_on_city_id"
     t.index ["state_id"], name: "index_houses_on_state_id"
+  end
+
+  create_table "saves", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "savable_type"
+    t.bigint "savable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["savable_type", "savable_id"], name: "index_saves_on_savable_type_and_savable_id"
+    t.index ["user_id", "savable_type", "savable_id"], name: "index_saves_on_user_id_and_savable_type_and_savable_id"
   end
 
   create_table "states", force: :cascade do |t|

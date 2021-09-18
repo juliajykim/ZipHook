@@ -34,6 +34,18 @@ class Api::HousesController < ApplicationController
     end
   end
 
+  def saving
+    heart = Save.new(user_id: current_user.id, savable_id: params[:id], savable_type: "House")
+    if heart.save
+      render "api/saves/show"
+    else
+      render json: save.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
+  def unsaving
+  end
+
   private
 
   def house_params

@@ -32,6 +32,7 @@ class House < ApplicationRecord
   # has_one_attached :photo
 
   has_many_attached :photos
+  has_many :saves, as: :savable
 
   # def ensure_photo
   #   unless self.photo.attached?
