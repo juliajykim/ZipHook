@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :houses do
       member do
         post :save, to: "houses#saving", as: "save"
-        post :unsave, to: "houses#unsaving", as: "unsave"
+        delete :unsave, to: "houses#unsaving", as: "unsave"
       end
     end
     resources :cities, only: [:index]

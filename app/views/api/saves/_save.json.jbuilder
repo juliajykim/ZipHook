@@ -1,1 +1,1 @@
-json.extract! save, :id, :user_id, :house_id
+json.extract! save, :id, :user_id, :savable_id

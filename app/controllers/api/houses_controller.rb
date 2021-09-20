@@ -35,15 +35,23 @@ class Api::HousesController < ApplicationController
   end
 
   def saving
-    heart = Save.new(user_id: current_user.id, savable_id: params[:id], savable_type: "House")
-    if heart.save
+    debugger
+    @save = Save.new(user_id: current_user.id, savable_id: params[:id], savable_type: "House")
+    if @save.save
       render "api/saves/show"
     else
-      render json: save.errors.full_messages, status: :unprocessable_entity
+      render json: save.errors.full_messages, status: 422
     end
   end
 
   def unsaving
+    @save = Save.find_by(user_id: current_user.id, savable_id: params[:id], savable_type: "House")
+
+    if @save.destroy
+      render "api/saves/show"
+    else
+      render json: @save.errors.full_messages, status: 422
+    end
   end
 
   private

@@ -4,16 +4,17 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { fetchAllCities } from "../../actions/cities_actions";
 import { openModal } from "../../actions/modal_actions";
+import { createSave, deleteSave } from "../../actions/saves_actions";
 import HouseShow from "./house_show";
 
 const HouseItem = (props) => {
   //hooks
   const house = props.house;
-  const [isSaved, setIsSaved] = useState(false);
   const currentUser = useSelector((state) => state.session.currentUser);
   const saves = useSelector((state) =>
     currentUser ? state.session.currentUser.saves : []
   );
+  const [isSaved, setIsSaved] = useState(saves.includes(house.id));
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -23,9 +24,9 @@ const HouseItem = (props) => {
   const handleSave = () => {
     setIsSaved(!isSaved);
     if (isSaved) {
-      //delete action goes here
+      dispatch(deleteSave(house));
     } else {
-      //create action goes here
+      dispatch(createSave(house));
     }
   };
 
@@ -50,7 +51,7 @@ const HouseItem = (props) => {
           id="heart"
           onClick={
             currentUser
-              ? () => handleSaves(house)
+              ? () => handleSave(house)
               : () => dispatch(openModal("login"))
           }>
           {heart()}
