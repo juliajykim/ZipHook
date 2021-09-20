@@ -61,7 +61,7 @@ const SessionForm = (props) => {
   const handleDemoUser = (e) => {
     e.preventDefault();
     const demoUser = { email: "demo@zip.com", password: "password" };
-    dispatch(login(demoUser)).then(dispatch(closeModal));
+    dispatch(login(demoUser)).then(dispatch(closeModal()));
   };
 
   const onClick = () => {

@@ -8,18 +8,17 @@ import HouseShow from "./house_show";
 
 const HouseItem = (props) => {
   //hooks
+  const house = props.house;
+  const [isSaved, setIsSaved] = useState(false);
+  const currentUser = useSelector((state) => state.session.currentUser);
+  const saves = useSelector((state) =>
+    currentUser ? state.session.currentUser.saves : []
+  );
+
   const history = useHistory();
   const dispatch = useDispatch();
 
   //props
-  const currentUser = useSelector((state) => state.session.currentUser);
-  const saves = currentUser
-    ? useSelector((state) => state.session.currentUser.saves)
-    : [];
-  const house = props.house;
-  const [isSaved, setIsSaved] = useState(
-    saves.includes(house.id) ? true : false
-  );
 
   const handleSave = () => {
     setIsSaved(!isSaved);
