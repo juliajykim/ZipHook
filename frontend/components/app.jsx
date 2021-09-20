@@ -7,6 +7,8 @@ import Splash from "./Splash/splash";
 import Search from "./Search/search";
 import HouseShow from "./Houses/house_show";
 import HouseSell from "./Houses/house_sell";
+import SavedHouses from "./CurrentUserNav/saved_houses";
+import HouseSellForm from "./Houses/house_sell_form";
 
 const App = () => {
   return (
@@ -14,9 +16,10 @@ const App = () => {
       <Modal />
       <HeaderNav />
       <Switch>
-        {/* <ProtectedRoute exact path='/zips/new' component={}/> */}
+        <ProtectedRoute exact path="/zips/new" component={HouseSellForm} />
+        <ProtectedRoute exact path="/zips/saves" component={SavedHouses} />
         <Route path="/zips/:id" component={HouseShow} />
-        <Route path="/sell" component={HouseSell} />
+        <ProtectedRoute path="/sell" component={HouseSell} />
         <Route path="/zips" component={Search} />
         <Route exact path="/" component={Splash} />
       </Switch>

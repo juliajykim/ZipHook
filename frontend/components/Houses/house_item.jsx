@@ -18,11 +18,15 @@ const HouseItem = (props) => {
 
   const history = useHistory();
   const dispatch = useDispatch();
-
+  debugger;
   //props
 
+  useEffect(() => {
+    dispatch(fetchAllCities({}));
+  }, []);
+
   const handleSave = () => {
-    setIsSaved(!isSaved);
+    setIsSaved((isSaved) => !isSaved);
     if (isSaved) {
       dispatch(deleteSave(house));
     } else {

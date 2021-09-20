@@ -1,22 +1,12 @@
-import React, {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
-import configureStore from "../../store/store";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import MarkerManager from "../../util/marker_manager";
 import { updateFilter } from "../../actions/filter_action";
 import { useDispatch, useSelector } from "react-redux";
-import { useStore } from "react-redux";
-import { fetchAllHouses } from "../../actions/houses_actions";
-import { useComponentDidUpdate } from "../../util/hook_util";
 
 const Map = (props) => {
   const houses = useSelector((state) => Object.values(state.entities.houses));
   const [currHouses, setCurrHouses] = useState(houses);
-  
+
   const dispatch = useDispatch();
   const mapRef = useRef(null);
   let map;

@@ -36,8 +36,10 @@ class Api::HousesController < ApplicationController
 
   def saving
     @save = Save.new(user_id: current_user.id, savable_id: params[:id], savable_type: "House")
+    @user = current_user
+
     if @save.save
-      render "api/saves/show"
+      render "api/users/show"
     else
       render json: save.errors.full_messages, status: 422
     end
@@ -45,9 +47,9 @@ class Api::HousesController < ApplicationController
 
   def unsaving
     @save = Save.find_by(user_id: current_user.id, savable_id: params[:id], savable_type: "House")
-
+    @user = current_user
     if @save.destroy
-      render "api/saves/show"
+      render "api/users/show"
     else
       render json: @save.errors.full_messages, status: 422
     end

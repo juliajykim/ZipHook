@@ -1,3 +1,4 @@
+import { DELETE_SAVE, RECEIVE_SAVE } from "../actions/saves_actions";
 import {
   RECEIVE_CURRENT_USER,
   LOGOUT_CURRENT_USER,
@@ -16,6 +17,12 @@ const sessionReducer = (oldState = _nullUser, action) => {
 
     case LOGOUT_CURRENT_USER:
       return _nullUser;
+
+    case RECEIVE_SAVE:
+      return { ...oldState, saves: action.save.saves };
+
+    case DELETE_SAVE:
+      return { ...oldState, saves: action.save.saves };
 
     default:
       return oldState;
