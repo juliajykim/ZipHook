@@ -22,7 +22,7 @@ const UserDropDown = (props) => {
       onBlur={closeDropDown}
       className="fas fa-user-circle">
       <div id="user-dropdown" className={isOpen ? "show" : "hidden"}>
-        <Link to="/myZip/saves"> Saved Properties </Link>
+        <Link to="/myZip/saves"> Saved Houses </Link>
         <Link to="/myZip/saves"> Saved Search </Link>
         <Link to="/myZip/saves"> Your home </Link>
         <a onClick={() => dispatch(logout())}> Sign out</a>

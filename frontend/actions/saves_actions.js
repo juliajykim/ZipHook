@@ -19,7 +19,6 @@ export const removeSave = (save) => {
 };
 
 export const createSave = (house) => {
-  debugger;
   return (dispatch) => {
     return SaveApiUtil.createSave(house).then(
       (save) => dispatch(receiveSave(save)),

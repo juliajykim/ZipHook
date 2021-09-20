@@ -16,7 +16,6 @@ import { useComponentDidUpdate } from "../../util/hook_util";
 const Map = (props) => {
   const houses = useSelector((state) => Object.values(state.entities.houses));
   const [currHouses, setCurrHouses] = useState(houses);
-  debugger;
   
   const dispatch = useDispatch();
   const mapRef = useRef(null);

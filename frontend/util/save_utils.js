@@ -1,5 +1,4 @@
 export const createSave = (house) => {
-  debugger;
   return $.ajax({
     method: "POST",
     url: `api/houses/${house.id}/save`,

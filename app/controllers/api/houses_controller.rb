@@ -35,7 +35,6 @@ class Api::HousesController < ApplicationController
   end
 
   def saving
-    debugger
     @save = Save.new(user_id: current_user.id, savable_id: params[:id], savable_type: "House")
     if @save.save
       render "api/saves/show"

@@ -41,7 +41,6 @@ function MyDropzone(props) {
   );
 
   const onDrop = useCallback((acceptedFiles) => {
-    debugger;
     props.handleFiles(acceptedFiles);
     setFiles(
       acceptedFiles.map((file) =>

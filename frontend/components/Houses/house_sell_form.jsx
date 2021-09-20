@@ -46,7 +46,6 @@ const HouseSellForm = (props) => {
     }
     dispatch(addNewHouse(formData));
     createHouse(formData).then((house) => {
-      debugger;
       history.replace(`zips/${house.id}`);
       dispatch(receiveHouse);
     });
