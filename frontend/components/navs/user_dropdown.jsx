@@ -8,12 +8,12 @@ const UserDropDown = (props) => {
   const dispatch = useDispatch();
 
   const openDropDown = (e) => {
-    setIsOpen({ isOpen: true });
+    setIsOpen(true);
   };
 
   const closeDropDown = (e) => {
     setTimeout(() => {
-      setIsOpen({ isOpen: false });
+      setIsOpen(false);
     }, 100);
   };
   return (
