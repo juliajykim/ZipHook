@@ -6,21 +6,45 @@ import { closeModal, openModal } from "../../actions/modal_actions";
 import { fetchHouse } from "../../util/house_utils";
 import { fetchAllCities } from "../../actions/cities_actions";
 import MiniMap from "../Map/mini_map";
+import { createSave, deleteSave } from "../../actions/saves_actions";
 
 const HouseShow = (props) => {
   //Hooks
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
+
   const [house, setHouse] = useState({});
+  const saves = useSelector((state) =>
+    state.session.currentUser ? state.session.currentUser.saves : []
+  );
+  const currentUser = useSelector((state) => state.session.currentUser);
 
   //Props
   const houseId = props.match.params.id;
-
+  const [isSaved, setIsSaved] = useState(saves.includes(parseInt(houseId)));
+  
   //FetchHouse when componentDidMount
   useEffect(() => {
     fetchHouse(houseId).then((house) => setHouse(house));
-  }, []);
+    setIsSaved(saves.includes(parseInt(houseId)));
+  }, [currentUser]);
+
+  const handleSave = () => {
+    setIsSaved((isSaved) => !isSaved);
+    if (isSaved) {
+      dispatch(deleteSave(house));
+    } else {
+      dispatch(createSave(house));
+    }
+  };
+
+  const heart = () =>
+    isSaved ? (
+      <a className="fas fa-heart saved"></a>
+    ) : (
+      <a className="far fa-heart" style={{ color: "#006aff" }}></a>
+    );
 
   const address = `${house.address}, ${house.city}, ${house.state} ${house.zipcode}`;
 
@@ -47,8 +71,13 @@ const HouseShow = (props) => {
               <div>
                 <button
                   id="heart"
-                  className="far fa-heart"
-                  style={{ color: "blue" }}></button>
+                  onClick={
+                    currentUser
+                      ? () => handleSave(house)
+                      : () => dispatch(openModal("login"))
+                  }>
+                  {heart()}
+                </button>
               </div>
             </div>
             <div className="property-info">

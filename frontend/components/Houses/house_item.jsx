@@ -6,7 +6,6 @@ import { fetchAllCities } from "../../actions/cities_actions";
 import { removeAllFilter } from "../../actions/filter_action";
 import { openModal } from "../../actions/modal_actions";
 import { createSave, deleteSave } from "../../actions/saves_actions";
-import HouseShow from "./house_show";
 
 const HouseItem = (props) => {
   //hooks
@@ -19,6 +18,10 @@ const HouseItem = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
   debugger;
+
+  useEffect(() => {
+    setIsSaved(saves.includes(house.id));
+  }, [currentUser]);
   //props
 
   // useEffect(() => {
