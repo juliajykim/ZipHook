@@ -6,8 +6,10 @@ import { fetchAllHouses } from "../../actions/houses_actions";
 
 const HousesIndex = (props) => {
   const houses = useSelector((state) => Object.values(state.entities.houses));
-  const saves = useSelector((state) => state.session.currentUser.saves);
-  
+  const saves = useSelector((state) =>
+    state.session.currentUser ? state.session.currentUser.saves : []
+  );
+
   const mappedHouses = houses.map((house, i) => {
     return <HouseItem key={`house-${i}`} house={house} saves={saves} />;
   });

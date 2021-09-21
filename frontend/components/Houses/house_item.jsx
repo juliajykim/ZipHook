@@ -38,7 +38,7 @@ const HouseItem = (props) => {
   };
 
   const heart = () =>
-    isSaved && currentUser.id ? (
+    isSaved && currentUser ? (
       <a className="fas fa-heart saved"></a>
     ) : (
       <a className="far fa-heart"></a>
