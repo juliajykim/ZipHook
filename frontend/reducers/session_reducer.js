@@ -19,10 +19,10 @@ const sessionReducer = (oldState = _nullUser, action) => {
       return _nullUser;
 
     case RECEIVE_SAVE:
-      return { ...oldState, saves: action.save.saves };
+      return { currentUser: action.save };
 
     case DELETE_SAVE:
-      return { ...oldState, saves: action.save.saves };
+      return { currentUser: action.save };
 
     default:
       return oldState;
