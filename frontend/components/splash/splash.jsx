@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Footer from "../Footer/footer";
+import Footer from "../footer/footer";
 import SearchBar from "../Search/search_bar";
 
 const Splash = (props) => {
