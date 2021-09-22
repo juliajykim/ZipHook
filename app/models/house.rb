@@ -57,10 +57,18 @@ class House < ApplicationRecord
     city = "%#{query.strip.split(//).join("%")}%"
     state = "%#{query.strip.split(//).join("%")}%"
     zipcode = query.to_i if query.match(/^\d+$/)
+    if (zipcode.is_a?(Integer))
+      minrange = zipcode - 100
+      maxrange = zipcode + 100
+    else
+      minrange = nil
+      maxrange = nil
+    end
+
     city_id = City.where("UPPER(TRIM(name)) LIKE UPPER(?)", city).pluck(:id)[0]
     state_id = State.where("UPPER(TRIM(name)) LIKE UPPER(?)", state).pluck(:id)[0]
 
     self.in_bounds(bounds)
-      .where("city_id=? OR state_id=? OR zipcode BETWEEN ? AND ?", city_id, state_id, zipcode - 100, zipcode + 100)
+      .where("city_id=? OR state_id=? OR zipcode BETWEEN ? AND ?", city_id, state_id, minrange, maxrange)
   end
 end
