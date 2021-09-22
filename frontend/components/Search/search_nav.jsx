@@ -29,7 +29,9 @@ const SearchNav = (props) => {
     debugger;
     return (e) => {
       e.stopPropagation();
-      dispatch(updateFilter([field], e.target.value));
+      e.preventDefault();
+      console.log(e.currentTarget.value);
+      dispatch(updateFilter([field], e.currentTarget.value));
     };
   };
 
@@ -55,44 +57,68 @@ const SearchNav = (props) => {
         <div className={isPriceOpen ? "show price" : "hidden"}>
           <div className="price-options">
             <h3> Min</h3>
-            <button value="0" onClick={handleDropDownSelection("min_price")}>
+            <button
+              value="0"
+              onMouseDown={handleDropDownSelection("min_price")}>
               $0+
             </button>
-            <button value="500" onClick={handleDropDownSelection("min_price")}>
+            <button
+              value="500"
+              onMouseDown={handleDropDownSelection("min_price")}>
               $500+
             </button>
-            <button value="1000" onClick={handleDropDownSelection("min_price")}>
+            <button
+              value="1000"
+              onMouseDown={handleDropDownSelection("min_price")}>
               $1000+
             </button>
-            <button value="1500" onClick={handleDropDownSelection("min_price")}>
+            <button
+              value="1500"
+              onMouseDown={handleDropDownSelection("min_price")}>
               $1500+
             </button>
-            <button value="2000" onClick={handleDropDownSelection("min_price")}>
+            <button
+              value="2000"
+              onMouseDown={handleDropDownSelection("min_price")}>
               $2000+
             </button>
-            <button value="3000" onClick={handleDropDownSelection("min_price")}>
+            <button
+              value="3000"
+              onMouseDown={handleDropDownSelection("min_price")}>
               $3000+
             </button>
           </div>
           <h3> - </h3>
           <div className="price-options">
             <h3> Max </h3>
-            <button value="1000" onClick={handleDropDownSelection("max_price")}>
+            <button
+              value="1000"
+              onMouseDown={handleDropDownSelection("max_price")}>
               $1000
             </button>
-            <button value="2000" onClick={handleDropDownSelection("max_price")}>
+            <button
+              value="2000"
+              onMouseDown={handleDropDownSelection("max_price")}>
               $2000
             </button>
-            <button value="3000" onClick={handleDropDownSelection("max_price")}>
+            <button
+              value="3000"
+              onMouseDown={handleDropDownSelection("max_price")}>
               $3000
             </button>
-            <button value="4000" onClick={handleDropDownSelection("max_price")}>
+            <button
+              value="4000"
+              onMouseDown={handleDropDownSelection("max_price")}>
               $4000
             </button>
-            <button value="5000" onClick={handleDropDownSelection("max_price")}>
+            <button
+              value="5000"
+              onMouseDown={handleDropDownSelection("max_price")}>
               $5000
             </button>
-            <button value="6000" onClick={handleDropDownSelection("max_price")}>
+            <button
+              value="6000"
+              onMouseDown={handleDropDownSelection("max_price")}>
               $6000
             </button>
           </div>
