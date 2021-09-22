@@ -59,6 +59,7 @@ class House < ApplicationRecord
     zipcode = query.to_i if query.match(/^\d+$/)
     city_id = City.where("UPPER(TRIM(name)) LIKE UPPER(?)", city).pluck(:id)[0]
     state_id = State.where("UPPER(TRIM(name)) LIKE UPPER(?)", state).pluck(:id)[0]
+
     self.in_bounds(bounds)
       .where("city_id=? OR state_id=? OR zipcode=?", city_id, state_id, zipcode)
   end

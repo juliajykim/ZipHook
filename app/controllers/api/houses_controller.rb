@@ -2,15 +2,14 @@ class Api::HousesController < ApplicationController
   def index
     if params[:bounds]
       if params[:query]
-        @houses = House.with_query(params[:bounds], params[:query])
-        debugger
+        @houses = House.with_query(params[:bounds], params[:query]).includes(:city, :state)
       else
-        @houses = House.with_attached_photos.in_bounds(params[:bounds])
+        @houses = House.with_attached_photos.in_bounds(params[:bounds]).includes(:city, :state)
       end
     else
-      @houses = House.with_attached_photos.all
+      @houses = House.all.with_attached_photos.includes(:city, :state)
     end
-    @cities = City.all
+
     render :index
   end
 
@@ -25,7 +24,7 @@ class Api::HousesController < ApplicationController
     city_id = City.where("UPPER(TRIM(name)) LIKE UPPER(?)", city).pluck(:id)[0]
     state_id = State.where("UPPER(TRIM(name)) LIKE UPPER(?)", state).pluck(:id)[0]
     if (!city_id)
-      city_id = City.create!(name: city.split("%").join("").upcase)
+      city_id = City.create!(name: city.split("%").join("").capitalize)
     end
     if (!state_id)
       state_id = State.create!(name: state.split("%").join("").upcase)

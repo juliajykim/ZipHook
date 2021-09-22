@@ -14,7 +14,15 @@ const HousesIndex = (props) => {
     return <HouseItem key={`house-${i}`} house={house} saves={saves} />;
   });
 
-  return <div className="property-index-container">{mappedHouses}</div>;
+  return (
+    <div className="property-index-container">
+      {mappedHouses.length > 0 ? (
+        mappedHouses
+      ) : (
+        <h2> "No Listing available.." </h2>
+      )}
+    </div>
+  );
 };
 
 export default HousesIndex;

@@ -21,7 +21,7 @@ const filtersReducer = (state = defaultFilters, action) => {
     case CLEAR_ALL_FILTER:
       return defaultFilters;
     default:
-      return defaultFilters;
+      return { ...state };
   }
 };
 
