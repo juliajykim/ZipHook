@@ -41,7 +41,7 @@ export function removeFilter(filter) {
 
 export function removeAllFilter() {
   return (dispatch, getState) => {
-    dispatch(clearFilter());
+    dispatch(clearAllFilter());
     return fetchAllHouses(getState().ui.filters)(dispatch);
   };
 }
