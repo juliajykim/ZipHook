@@ -61,6 +61,6 @@ class House < ApplicationRecord
     state_id = State.where("UPPER(TRIM(name)) LIKE UPPER(?)", state).pluck(:id)[0]
 
     self.in_bounds(bounds)
-      .where("city_id=? OR state_id=? OR zipcode=?", city_id, state_id, zipcode)
+      .where("city_id=? OR state_id=? OR zipcode BETWEEN ? AND ?", city_id, state_id, zipcode - 100, zipcode + 100)
   end
 end
