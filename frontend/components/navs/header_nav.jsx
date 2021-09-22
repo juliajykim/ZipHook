@@ -12,9 +12,9 @@ const HeaderNav = () => {
     <div className="NavHeader">
       <div className="NavHeader-left">
         <Link to="/zips"> Buy </Link>
-        <Link to="/buy"> Rent </Link>
+        <Link to="/zips"> Rent </Link>
         <Link to="/sell"> Sell </Link>
-        <Link to="/buy"> AgentFinder </Link>
+        <a href="https://juliajykim.github.io/JuliaKim/#home"> AgentFinder </a>
       </div>
       <Link to="/" className="logo-container">
         <img className="logo" src={window.logoURL} />

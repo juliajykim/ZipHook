@@ -8,7 +8,7 @@ const defaultFilters = Object.freeze({
   bounds: {},
 });
 
-const filtersReducer = (state = defaultFilters, action) => {
+const filtersReducer = (state = {}, action) => {
   Object.freeze(state);
 
   switch (action.type) {
@@ -19,7 +19,7 @@ const filtersReducer = (state = defaultFilters, action) => {
       delete newState[action.filter];
       return newState;
     case CLEAR_ALL_FILTER:
-      return defaultFilters;
+      return { bounds: state.bounds };
     default:
       return { ...state };
   }

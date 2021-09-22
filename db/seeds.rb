@@ -42,10 +42,10 @@ states = [ny, nj, sf]
   house.state_id = states.sample.id
   house.state = states.sample
   house.zipcode = rand(10001..11104)
-  house.price = rand(100000..10000000)
+  house.price = rand(500..10000)
   house.beds = rand(1..10)
   house.baths = rand(1..10)
-  house.sqft = rand(400..10000)
+  house.sqft = rand(400..5000)
   house.is_rent = true
   house.description = Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false)
 
