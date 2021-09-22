@@ -5,7 +5,6 @@ import { updateFilter, removeAllFilter } from "../../actions/filter_action";
 const SearchNav = (props) => {
   const dispatch = useDispatch();
   const [query, setQuery] = useState("");
-  const [filters, setFilters] = useState({});
   const [pricetxt, setPriceTxt] = useState("Price");
   const [bdText, setBdText] = useState("Bedrooms");
   const [baText, setBaText] = useState("Bathrooms");
@@ -50,6 +49,12 @@ const SearchNav = (props) => {
     dispatch(removeAllFilter());
   };
 
+  const handleClearFilter = () => {
+    clearFilters();
+    setPriceTxt("Price");
+    setBaText("Bathrooms");
+    setBdText("Bedrooms");
+  };
   return (
     <div className="search-nav-area">
       {/* TODO: Query Input Area */}
@@ -209,7 +214,7 @@ const SearchNav = (props) => {
             </div>
           </div>
           <div className="filter-drop-down-wrapper">
-            <button onClick={clearFilters}> Clear</button>
+            <button onClick={handleClearFilter}> Clear</button>
           </div>
         </div>
       </div>
