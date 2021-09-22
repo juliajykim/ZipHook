@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
+
 import HeaderNav from "./navs/header_nav";
 import Modal from "./modal/modal";
 import Splash from "./splash/splash";
