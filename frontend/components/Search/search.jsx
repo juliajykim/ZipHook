@@ -6,6 +6,7 @@ import { updateFilter } from "../../actions/filter_action";
 import HousesIndex from "../Houses/houses_index";
 import Map from "../Map/map";
 import MapClass from "../Map/map_class";
+import SearchNav from "./search_nav";
 
 const Search = (props) => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const Search = (props) => {
   return (
     <div>
       <div>
-        <h1 style={{ border: "10px solid red" }}>Search nav goes here</h1>
+        <SearchNav />
       </div>
       <div className="listing-page">
         <div className="listing-page-left">

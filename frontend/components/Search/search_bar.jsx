@@ -15,7 +15,6 @@ const SearchBar = (props) => {
   };
 
   const handleSubmit = (e) => {
-    debugger;
     e.preventDefault();
     //update filter with state
     dispatch(updateFilter("query", query));

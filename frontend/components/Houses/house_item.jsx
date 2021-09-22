@@ -10,14 +10,12 @@ import { createSave, deleteSave } from "../../actions/saves_actions";
 const HouseItem = (props) => {
   //hooks
   const { house, saves } = props;
-  debugger;
   const currentUser = useSelector((state) => state.session.currentUser);
 
   const [isSaved, setIsSaved] = useState(saves.includes(house.id));
 
   const history = useHistory();
   const dispatch = useDispatch();
-  debugger;
 
   useEffect(() => {
     setIsSaved(saves.includes(house.id));

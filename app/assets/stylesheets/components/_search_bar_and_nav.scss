@@ -79,7 +79,10 @@
 }
 
 .search-nav-area {
-  padding-left: 50px;
+  height: 60px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
   .filter-from-nav-left {
     width: 50%;
   }

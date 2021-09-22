@@ -26,6 +26,7 @@ export const clearAllFilter = () => {
 };
 
 export function updateFilter(filter, value) {
+  debugger;
   return (dispatch, getState) => {
     dispatch(changeFilter(filter, value));
     return fetchAllHouses(getState().ui.filters)(dispatch);

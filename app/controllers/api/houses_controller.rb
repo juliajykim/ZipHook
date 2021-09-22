@@ -14,7 +14,7 @@ class Api::HousesController < ApplicationController
   end
 
   def show
-    @house = House.with_attached_photos.find(params[:id]).includes(:city, :state)
+    @house = House.with_attached_photos.includes(:city, :state).find(params[:id])
     render "api/houses/show"
   end
 
@@ -23,12 +23,17 @@ class Api::HousesController < ApplicationController
     state = "%#{params[:house][:state].strip.split(//).join("%")}%"
     city_id = City.where("UPPER(TRIM(name)) LIKE UPPER(?)", city).pluck(:id)[0]
     state_id = State.where("UPPER(TRIM(name)) LIKE UPPER(?)", state).pluck(:id)[0]
+
     if (!city_id)
-      city_id = City.create!(name: city.split("%").join("").capitalize)
+      new_city = City.create!(name: city.split("%").join("").capitalize)
+      city_id = new_city.id
     end
+
     if (!state_id)
-      state_id = State.create!(name: state.split("%").join("").upcase)
+      new_state = State.create!(name: state.split("%").join("").upcase)
+      state_id = new_state.id
     end
+    
     params[:house][:city_id] = city_id
     params[:house][:state_id] = state_id
     @house = House.new(house_params)
