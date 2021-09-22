@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Footer/footer";
+import SearchBar from "../Search/search_bar";
 
 const Splash = (props) => {
   return (
@@ -9,10 +10,7 @@ const Splash = (props) => {
       <div className="main-search">
         <div className="search-slogan"> Change starts here </div>
         <div className="search-bar-container">
-          <h1 style={{ border: "10px solid red", color: "white" }}>
-            SearchBar Goes here
-          </h1>
-          {/* <SearchBarContainer /> */}
+          <SearchBar />
         </div>
       </div>
 

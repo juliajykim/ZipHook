@@ -1,6 +1,15 @@
 class Api::HousesController < ApplicationController
   def index
-    @houses = params[:bounds] ? House.with_attached_photos.in_bounds(params[:bounds]) : House.with_attached_photos.all
+    if params[:bounds]
+      if params[:query]
+        @houses = House.with_query(params[:bounds], params[:query])
+        debugger
+      else
+        @houses = House.with_attached_photos.in_bounds(params[:bounds])
+      end
+    else
+      @houses = House.with_attached_photos.all
+    end
     @cities = City.all
     render :index
   end
