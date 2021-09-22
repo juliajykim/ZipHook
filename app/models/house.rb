@@ -46,17 +46,45 @@ class House < ApplicationRecord
     end
   end
 
-  def self.in_bounds(bounds)
+  def self.in_bounds(params)
+    bounds = params[:bounds]
+    min_beds = params[:min_beds] && params[:min_beds] != "" ? params[:min_beds].delete("+ bd").to_i : 0
+    min_baths = params[:min_baths] && params[:min_baths] != "" ? params[:min_baths].delete("+ ba").to_i : 0
+    min_price = params[:min_price] && params[:min_price] != "" ? params[:min_price].delete("+").delete("$").to_i : 0
+    max_price = params[:max_price] && params[:max_price] != "" ? params[:max_price].delete("~").delete("$").to_i : 100000000000
     self.where("lat < ?", bounds[:northEast][:lat])
       .where("lat > ?", bounds[:southWest][:lat])
       .where("lng < ?", bounds[:northEast][:lng])
       .where("lng > ?", bounds[:southWest][:lng])
+      .where("beds >= ?", min_beds)
+      .where("baths >= ?", min_baths)
+      .where(price: (min_price..max_price))
+      .distinct
   end
 
-  def self.with_query(bounds, query)
+  def self.with_query(params)
+    bounds = params[:bounds]
+    query = params[:query]
     city = "%#{query.strip.split(//).join("%")}%"
     state = "%#{query.strip.split(//).join("%")}%"
     zipcode = query.to_i if query.match(/^\d+$/)
+
+    if (city == "%%" && state == "%%" && zipcode == nil)
+      return self.in_bounds(bounds)
+    end
+
+    if city == "%%"
+      city_id = nil
+    else
+      city_id = City.where("UPPER(TRIM(name)) LIKE UPPER(?)", city).pluck(:id)[0]
+    end
+
+    if state == "%%"
+      state_id = nil
+    else
+      state_id = State.where("UPPER(TRIM(name)) LIKE UPPER(?)", state).pluck(:id)[0]
+    end
+
     if (zipcode.is_a?(Integer))
       minrange = zipcode - 100
       maxrange = zipcode + 100
@@ -65,10 +93,6 @@ class House < ApplicationRecord
       maxrange = nil
     end
 
-    city_id = City.where("UPPER(TRIM(name)) LIKE UPPER(?)", city).pluck(:id)[0]
-    state_id = State.where("UPPER(TRIM(name)) LIKE UPPER(?)", state).pluck(:id)[0]
-
-    self.in_bounds(bounds)
-      .where("city_id=? OR state_id=? OR zipcode BETWEEN ? AND ?", city_id, state_id, minrange, maxrange)
+    return self.in_bounds(params).where("city_id=? OR state_id=? OR zipcode BETWEEN ? AND ?", city_id, state_id, minrange, maxrange)
   end
 end

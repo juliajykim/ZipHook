@@ -2,9 +2,9 @@ class Api::HousesController < ApplicationController
   def index
     if params[:bounds]
       if params[:query]
-        @houses = House.with_query(params[:bounds], params[:query]).includes(:city, :state).with_attached_photos
+        @houses = House.with_query(params).includes(:city, :state).with_attached_photos
       else
-        @houses = House.with_attached_photos.in_bounds(params[:bounds]).includes(:city, :state)
+        @houses = House.with_attached_photos.in_bounds(params).includes(:city, :state)
       end
     else
       @houses = House.all.with_attached_photos.includes(:city, :state)
@@ -33,7 +33,7 @@ class Api::HousesController < ApplicationController
       new_state = State.create!(name: state.split("%").join("").upcase)
       state_id = new_state.id
     end
-    
+
     params[:house][:city_id] = city_id
     params[:house][:state_id] = state_id
     @house = House.new(house_params)

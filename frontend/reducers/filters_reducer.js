@@ -13,7 +13,6 @@ const filtersReducer = (state = defaultFilters, action) => {
 
   switch (action.type) {
     case CHANGE_FILTER:
-      debugger;
       return { ...state, [action.filter]: action.value };
     case CLEAR_FILTER:
       const newState = { ...state };

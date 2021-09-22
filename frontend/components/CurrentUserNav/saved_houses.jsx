@@ -12,7 +12,6 @@ const SavedHouses = (props) => {
     fetchAllHouses({}).then((houses) => setHouses(houses));
   }, []);
   const saves = useSelector((state) => {
-    debugger;
     return state.session.currentUser.saves;
   });
 
@@ -22,7 +21,6 @@ const SavedHouses = (props) => {
       <div className="saved-properties">
         {!jQuery.isEmptyObject(houses)
           ? saves.map((id) => {
-              debugger;
               return <HouseItem key={id} house={houses[id]} saves={saves} />;
             })
           : null}

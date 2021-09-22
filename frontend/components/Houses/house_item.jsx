@@ -22,13 +22,6 @@ const HouseItem = (props) => {
   }, [currentUser]);
   //props
 
-  // useEffect(() => {
-  //   return () => {
-  //     debugger;
-  //     dispatch(removeAllFilter());
-  //   };
-  // }, []);
-
   const handleSave = () => {
     setIsSaved((isSaved) => !isSaved);
     if (isSaved) {

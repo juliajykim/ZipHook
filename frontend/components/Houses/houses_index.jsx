@@ -19,7 +19,7 @@ const HousesIndex = (props) => {
       {mappedHouses.length > 0 ? (
         mappedHouses
       ) : (
-        <h2> "No Listing available.." </h2>
+        <h1 className="no-listing"> "No Listing available.." </h1>
       )}
     </div>
   );
