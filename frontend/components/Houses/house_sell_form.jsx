@@ -5,6 +5,8 @@ import { addNewHouse, receiveHouse } from "../../actions/houses_actions";
 import { createHouse } from "../../util/house_utils";
 import MyDropzone from "./dropzone";
 import GeocodingMap from "../Map/geocoding_map";
+import LoadingSpinner from "../Utils/loader";
+import { useSelector } from "react-redux";
 
 const HouseSellForm = (props) => {
   const [currState, setCurrState] = useState({});
@@ -12,6 +14,8 @@ const HouseSellForm = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [photoFiles, setPhotoFiles] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+  const errors = useSelector((state) => state.errors);
 
   const onInput = (e, type) => {
     // e.preventDefault();
@@ -24,6 +28,8 @@ const HouseSellForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    debugger;
+    setLoading(true);
     const formData = new FormData();
     formData.append("house[address]", currState.address);
     formData.append("house[city]", currState.city);
@@ -48,13 +54,18 @@ const HouseSellForm = (props) => {
     }
     dispatch(addNewHouse(formData));
     createHouse(formData).then((house) => {
+      setLoading(false);
       history.replace(`zips/${house.id}`);
       dispatch(receiveHouse);
     });
   };
 
+  if (errors.length > 0) {
+    window.alert(errors)
+  }
   return (
     <div>
+      <LoadingSpinner isLoading={isLoading} />
       <div className="house-sell-form-container">
         {/* NOTE : Dropzone */}
         <div className="dropzone-container">
@@ -156,23 +167,31 @@ const HouseSellForm = (props) => {
                 />
               </div>
             </div>
-            {/* NOTE: Rent */}
-            <div class="rent-sell-container">
+            {/* NOTE: IsRent */}
+            <div className="rent-sell-container">
               <div>
                 <input
                   type="radio"
                   id="rent"
                   name="isRent"
-                  value="true"
-                  checked
+                  value={true}
+                  checked={currState.is_rent === "true"}
+                  onChange={(e) => onInput(e, "is_rent")}
                 />
-                <label for="rent">
+                <label htmlFor="rent">
                   <p id="isRent-text">Rent</p>
                 </label>
               </div>
               <div>
-                <input type="radio" id="sell" name="isRent" value="false" />
-                <label for="sell">
+                <input
+                  type="radio"
+                  id="sell"
+                  name="isRent"
+                  value={false}
+                  onChange={(e) => onInput(e, "is_rent")}
+                  checked={currState.is_rent === "false"}
+                />
+                <label htmlFor="sell">
                   <p id="isRent-text">Sell</p>
                 </label>
               </div>
@@ -190,7 +209,7 @@ const HouseSellForm = (props) => {
             </div>
 
             {/* NOTE: LAT LNG */}
-            <div class="lat-lng-container">
+            <div className="lat-lng-container">
               <div>
                 <label id="sell-form-input">
                   <p>Latitude</p>

@@ -3,6 +3,8 @@ import MarkerManager from "../../util/marker_manager";
 
 const GeocodingMap = (props) => {
   const mapRef = useRef(null);
+  const [thisMap, setThisMap] = useState()
+  
   let markers = [];
   const mapOptions = {
     center: { lat: 40.77247667478867, lng: -73.96232993103025 },
@@ -24,18 +26,23 @@ const GeocodingMap = (props) => {
 
   const initMap = useCallback(() => {
     const map = new window.google.maps.Map(mapRef.current, mapOptions);
-
-    map.addListener("click", function (event) {
-      props.setCurrState({
-        ...props.currState,
-        lat: event.latLng.lat(),
-        lng: event.latLng.lng(),
-      });
-
-      addMarker(event.latLng, map);
-    });
+    setThisMap(map)
   }, [mapRef]);
 
+  const registerListener = () => {
+    if(thisMap){
+      google.maps.event.addListener(thisMap, "click", function (event) {
+        props.setCurrState({
+          ...props.currState,
+          lat: event.latLng.lat(),
+          lng: event.latLng.lng(),
+        });
+  
+        addMarker(event.latLng, thisMap);
+      });
+    }
+  }
+  
   const addMarker = (position, map) => {
     if (markers.length > 0) {
       markers[0].setMap(null);
@@ -53,6 +60,10 @@ const GeocodingMap = (props) => {
   useEffect(() => {
     initMap();
   }, [initMap]);
+
+    useEffect(() => {
+      registerListener();
+    }, [addMarker]);
 
   return <div id="geocoding-map-container" ref={mapRef} />;
 };

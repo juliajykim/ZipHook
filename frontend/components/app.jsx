@@ -17,10 +17,11 @@ const App = () => {
       <Modal />
       <HeaderNav />
       <Switch>
-        <ProtectedRoute exact path="/zips/new" component={HouseSellForm} />
+        <ProtectedRoute exact path="/zips/new" component={HouseSell} />
         <ProtectedRoute exact path="/zips/saves" component={SavedHouses} />
         <Route path="/zips/:id" component={HouseShow} />
-        <ProtectedRoute path="/sell" component={HouseSell} />
+        <ProtectedRoute exact path="/sell/form" component={HouseSellForm} />
+        <Route path="/sell" component={HouseSell} />
         <Route path="/zips" component={Search} />
         <Route exact path="/" component={Splash} />
       </Switch>
