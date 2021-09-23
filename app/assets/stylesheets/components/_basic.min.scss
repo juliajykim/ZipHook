@@ -44,3 +44,15 @@
   left: 50%;
   margin-left: -27px;
 }
+
+.dropdown-icon-area {
+  text-align: center;
+
+  .fa-cloud-upload-alt:before {
+    font-size: 200px;
+    line-height: 400px;
+  }
+  > p {
+    font-size: large;
+  }
+}

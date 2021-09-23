@@ -3,6 +3,7 @@ import { useDropzone } from "react-dropzone";
 
 const baseStyle = {
   display: "flex",
+  height: "60vh",
   flexDirection: "column",
   alignItems: "center",
   padding: "20px",
@@ -13,18 +14,6 @@ const baseStyle = {
   backgroundColor: "#fafafa",
   color: "#bdbdbd",
   transition: "border .3s ease-in-out",
-};
-
-const activeStyle = {
-  borderColor: "#2196f3",
-};
-
-const acceptStyle = {
-  borderColor: "#00e676",
-};
-
-const rejectStyle = {
-  borderColor: "#ff1744",
 };
 
 function MyDropzone(props) {
@@ -76,14 +65,22 @@ function MyDropzone(props) {
   return (
     <div className="dropzone">
       <div {...getRootProps({ style })}>
-        <input {...getInputProps()} />
-        {isDragActive ? (
-          <p>Drop it like it's hot!</p>
+        {thumbs.length > 0 ? (
+          <aside>{thumbs}</aside>
         ) : (
-          <p>Drag 'n' drop some files here, or click to select files</p>
+          <>
+            <input {...getInputProps()} />
+            {isDragActive ? (
+              <p>Drop it like it's hot!</p>
+            ) : (
+              <div className="dropdown-icon-area">
+                <i className="fas fa-cloud-upload-alt"></i>
+                <p>Drag 'n' drop some files here, or click to select files</p>
+              </div>
+            )}
+          </>
         )}
       </div>
-      <aside>{thumbs}</aside>
     </div>
   );
 }
