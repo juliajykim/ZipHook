@@ -54,7 +54,7 @@ const GeocodingMap = (props) => {
     initMap();
   }, [initMap]);
 
-  return <div id="mini-map-container" ref={mapRef} />;
+  return <div id="geocoding-map-container" ref={mapRef} />;
 };
 
 export default GeocodingMap;

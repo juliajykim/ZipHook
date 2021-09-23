@@ -14,7 +14,7 @@ const HouseSellForm = (props) => {
   const [photoFiles, setPhotoFiles] = useState([]);
 
   const onInput = (e, type) => {
-    e.preventDefault();
+    // e.preventDefault();
     setCurrState({ ...currState, [type]: e.currentTarget.value });
   };
 
@@ -64,153 +64,169 @@ const HouseSellForm = (props) => {
         <div className="house-sell-input-container">
           <form onSubmit={handleSubmit}>
             {/* NOTE: ADDRESS */}
-            <label>
-              Address
-              <input
-                type="text"
-                value={currState.address || ""}
-                onChange={(e) => onInput(e, "address")}
-                required
-              />
+            <label id="sell-form-input">
+              <p>Address</p>
             </label>
+            <input
+              type="text"
+              value={currState.address || ""}
+              onChange={(e) => onInput(e, "address")}
+              required
+            />
 
-            {/* NOTE: CITY */}
-            <label>
-              city
-              <input
-                type="text"
-                value={currState.city || ""}
-                onChange={(e) => onInput(e, "city")}
-                required
-              />
-            </label>
-
-            {/* NOTE: State */}
-            <label>
-              state
-              <input
-                type="text"
-                value={currState.state || ""}
-                onChange={(e) => onInput(e, "state")}
-                required
-              />
-            </label>
+            {/* NOTE: CITY & STATE */}
+            <div className="city-state-input">
+              <div>
+                <label id="sell-form-input">
+                  <p>City</p>
+                </label>
+                <input
+                  type="text"
+                  value={currState.city || ""}
+                  onChange={(e) => onInput(e, "city")}
+                  required
+                />
+              </div>
+              <div>
+                <label id="sell-form-input">
+                  <p>State</p>
+                </label>
+                <input
+                  type="text"
+                  value={currState.state || ""}
+                  onChange={(e) => onInput(e, "state")}
+                  required
+                />
+              </div>
+            </div>
 
             {/* NOTE: Zipcode */}
-            <label>
-              zipcode
-              <input
-                type="text"
-                value={currState.zipcode || ""}
-                onChange={(e) => onInput(e, "zipcode")}
-                required
-              />
+            <label id="sell-form-input">
+              <p>Zipcode</p>
             </label>
-
+            <input
+              type="text"
+              value={currState.zipcode || ""}
+              onChange={(e) => onInput(e, "zipcode")}
+              required
+            />
             {/* NOTE: Price */}
-            <label>
-              price
-              <input
-                type="text"
-                value={currState.price || ""}
-                onChange={(e) => onInput(e, "price")}
-                required
-              />
+            <label id="sell-form-input">
+              <p>Price</p>
             </label>
-
-            {/* NOTE: Bathrooms */}
-            <label>
-              baths
-              <input
-                type="text"
-                value={currState.baths || ""}
-                onChange={(e) => onInput(e, "baths")}
-                required
-              />
-            </label>
-
-            {/* NOTE: Bedrooms */}
-            <label>
-              beds
-              <input
-                type="text"
-                value={currState.beds || ""}
-                onChange={(e) => onInput(e, "beds")}
-                required
-              />
-            </label>
-
-            {/* NOTE: SQFT */}
-            <label>
-              sqft
-              <input
-                type="text"
-                value={currState.sqft || ""}
-                onChange={(e) => onInput(e, "sqft")}
-                required
-              />
-            </label>
-
+            <input
+              type="text"
+              value={currState.price || ""}
+              onChange={(e) => onInput(e, "price")}
+              required
+            />
+            {/* NOTE: Bedrooms Bathrooms */}
+            <div className="bd-ba-input">
+              <div>
+                <label id="sell-form-input">
+                  <p>Bedrooms</p>
+                </label>
+                <input
+                  type="text"
+                  value={currState.beds || ""}
+                  onChange={(e) => onInput(e, "beds")}
+                  required
+                />
+              </div>
+              <div>
+                <label id="sell-form-input">
+                  <p>Bathrooms</p>
+                </label>
+                <input
+                  type="text"
+                  value={currState.baths || ""}
+                  onChange={(e) => onInput(e, "baths")}
+                  required
+                />
+              </div>
+              <div>
+                <label id="sell-form-input">
+                  <p>Sqft</p>
+                </label>
+                <input
+                  type="text"
+                  value={currState.sqft || ""}
+                  onChange={(e) => onInput(e, "sqft")}
+                  required
+                />
+              </div>
+            </div>
             {/* NOTE: Rent */}
-            <label>
-              Rent
-              <input
-                type="radio"
-                value={true}
-                onChange={(e) => onInput(e, "isRent")}
-                required
-              />
-            </label>
-
-            <label>
-              Sell
-              <input
-                type="radio"
-                value={false}
-                onChange={(e) => onInput(e, "isRent")}
-                required
-              />
-            </label>
-
+            <div class="rent-sell-container">
+              <div>
+                <input
+                  type="radio"
+                  id="rent"
+                  name="isRent"
+                  value="true"
+                  checked
+                />
+                <label for="rent">
+                  <p id="isRent-text">Rent</p>
+                </label>
+              </div>
+              <div>
+                <input type="radio" id="sell" name="isRent" value="false" />
+                <label for="sell">
+                  <p id="isRent-text">Sell</p>
+                </label>
+              </div>
+            </div>
             {/* NOTE: MAP */}
-            <h1> Click map to get coordinates of your house!</h1>
-            <GeocodingMap setCurrState={setCurrState} currState={currState} />
+            <div className="geo-coding-container">
+              <h1>
+                Click map to get coordinates{" "}
+                <img
+                  src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+                  id="pin"
+                />
+              </h1>
+              <GeocodingMap setCurrState={setCurrState} currState={currState} />
+            </div>
 
             {/* NOTE: LAT LNG */}
-            <label>
-              lat
-              <input
-                type="text"
-                value={currState.lat || ""}
-                onChange={(e) => onInput(e, "lat")}
-                required
-              />
-            </label>
-
-            <label>
-              lng
-              <input
-                type="text"
-                value={currState.lng || ""}
-                onChange={(e) => onInput(e, "lng")}
-                required
-              />
-            </label>
-
+            <div class="lat-lng-container">
+              <div>
+                <label id="sell-form-input">
+                  <p>Latitude</p>
+                </label>
+                <input
+                  type="text"
+                  value={currState.lat || ""}
+                  onChange={(e) => onInput(e, "lat")}
+                  required
+                />
+              </div>
+              <div>
+                <label id="sell-form-input">
+                  <p>Longitude </p>
+                </label>
+                <input
+                  type="text"
+                  value={currState.lng || ""}
+                  onChange={(e) => onInput(e, "lng")}
+                  required
+                />
+              </div>
+            </div>
             {/* NOTE: Description */}
-            <label>
-              description
-              <input
-                type="text"
-                value={currState.description || ""}
-                onChange={(e) => onInput(e, "description")}
-                required
-              />
+            <label id="sell-form-input">
+              <p>Description</p>
             </label>
-
+            <textarea
+              value={currState.description || ""}
+              onChange={(e) => onInput(e, "description")}
+              required
+            />
             {/* NOTE: submit button */}
-
-            <button type="submit">Create House!</button>
+            <button type="submit" id="create-house-btn">
+              Create House!
+            </button>
           </form>
         </div>
       </div>

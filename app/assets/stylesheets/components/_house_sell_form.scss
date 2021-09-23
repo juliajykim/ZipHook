@@ -1,6 +1,9 @@
 @import "../base/fonts";
 @import "../base/colors";
 
+.dropzone-container {
+  margin: 0 20px;
+}
 .house-sell-form-container {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -11,17 +14,54 @@
 }
 
 .house-sell-input-container {
-  border: 5px solid goldenrod;
+  margin: 0 20px;
   > form {
     display: flex;
     flex-direction: column;
     margin: 20px;
     input[type="text"] {
-      border: 5px solid red;
-      margin: 10px;
+      width: 60%;
+      border: 0.7px solid $input-area-border-color;
+      border-radius: 3px;
+      background-color: $input-area-color;
+      padding: 13px 0px 13px 10px;
+      &:hover {
+        border: 1px solid #006aff;
+      }
+      margin-bottom: 20px;
     }
     label {
-      width: 20%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: medium;
+      margin: 10px;
+      > p {
+        width: 20%;
+      }
+    }
+    #sell-form-input {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 20% 70%;
+    }
+    textarea {
+      width: 70%;
+      height: 150px;
+      border: 0.7px solid $input-area-border-color;
+      border-radius: 3px;
+      background-color: $input-area-color;
+      margin-bottom: 20px;
+      padding: 20px;
+      font-size: medium;
+    }
+    .city-state-input {
+      display: grid;
+      grid-template-columns: 42% 30%;
+    }
+    .bd-ba-input {
+      display: grid;
+      grid-template-columns: 23% 23% 23%;
     }
   }
 }
@@ -38,4 +78,78 @@
   :hover {
     text-shadow: 0 0 20px #009dff;
   }
+}
+
+.geo-coding-container {
+  border: 2px solid $input-area-border-color;
+  background-color: $input-area-color;
+  border-radius: 5px;
+  margin: 20px 0;
+  width: 75%;
+  > h1 {
+    margin: 20px;
+    font-size: medium;
+    display: flex;
+  }
+}
+
+.rent-sell-container {
+  display: flex;
+  > div {
+    padding: 0 3%;
+  }
+  input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+  label {
+    display: flex;
+    padding: 10px 30px;
+    border: 2px solid $input-area-border-color;
+    border-radius: 5px;
+    width: 60px;
+    text-align: center;
+    :hover {
+      background-color: rgb(187, 231, 255);
+    }
+  }
+  input[type="radio"]:checked + label {
+    background-color: rgb(187, 231, 255);
+    border-color: $zillow-color;
+  }
+}
+
+.lat-lng-container {
+  display: grid;
+  grid-template-columns: 40% 40%;
+}
+
+#isRent-text {
+  text-align: center;
+  width: 100%;
+  margin: 10px;
+}
+
+#create-house-btn {
+  width: 60%;
+  border: 1px solid $input-area-border-color;
+  border-radius: 3px;
+  background-color: $zillow-color;
+  font-size: medium;
+  padding: 13px 0px 13px 10px;
+  &:hover {
+    border: 1px solid $zillow-color;
+    box-shadow: 0.5px 0.5px 5px 1px #009dff;
+  }
+}
+
+#geocoding-map-container {
+  width: 100%;
+  height: 300px;
+}
+
+#pin {
+  width: auto;
+  height: inherit;
 }
