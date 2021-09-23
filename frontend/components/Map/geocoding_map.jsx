@@ -45,7 +45,7 @@ const GeocodingMap = (props) => {
     const marker = new google.maps.Marker({
       position,
       map: map,
-      icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+      icon: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
     });
     markers.push(marker);
   };

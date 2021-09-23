@@ -3,7 +3,6 @@ class MarkerManager {
     this.map = map;
     this.history = history;
     this.markers = {};
-    debugger
   }
 
   updateMarkers(houses) {
@@ -47,11 +46,11 @@ class MarkerManager {
 
     const mouseOver = () => {
       marker.infoWindow.open(this.map, marker);
-      marker.setIcon("http://maps.google.com/mapfiles/ms/icons/blue-dot.png");
+      marker.setIcon("https://maps.google.com/mapfiles/ms/icons/blue-dot.png");
     };
     const mouseOut = () => {
       marker.infoWindow.close(this.map, marker);
-      marker.setIcon("http://maps.google.com/mapfiles/ms/icons/red-dot.png");
+      marker.setIcon("https://maps.google.com/mapfiles/ms/icons/red-dot.png");
     };
 
     const marker = new google.maps.Marker({
@@ -59,7 +58,7 @@ class MarkerManager {
       map: this.map,
       infoWindow: houseInfoWindow,
       houseId: newHouse.id,
-      icon: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+      icon: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
     });
     marker.addListener("mouseover", mouseOver);
     marker.addListener("mouseout", mouseOut);

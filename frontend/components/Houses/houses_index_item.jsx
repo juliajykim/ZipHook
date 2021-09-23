@@ -15,11 +15,9 @@ class HouseIndexItem extends React.Component {
     const { isSaved } = this.state;
     if (this.state.isSaved) {
       this.setState({ isSaved: !isSaved });
-      debugger;
       this.props.deleteSave(this.props.house);
     } else {
       this.setState({ isSaved: !isSaved });
-      debugger;
       this.props.createSave(this.props.house);
     }
   }
