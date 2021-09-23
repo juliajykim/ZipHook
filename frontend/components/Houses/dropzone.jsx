@@ -7,12 +7,11 @@ const baseStyle = {
   flexDirection: "column",
   alignItems: "center",
   padding: "20px",
-  borderWidth: 2,
-  borderRadius: 2,
-  borderColor: "#eeeeee",
+  borderWidth: 3,
+  borderRadius: 3,
+  borderColor: "#006aff",
   borderStyle: "dashed",
-  backgroundColor: "#fafafa",
-  color: "#bdbdbd",
+  color: "#006aff",
   transition: "border .3s ease-in-out",
 };
 
@@ -71,7 +70,7 @@ function MyDropzone(props) {
           <>
             <input {...getInputProps()} />
             {isDragActive ? (
-              <p>Drop it like it's hot!</p>
+              <h1 style={{ color: "red" }}>Drop it like it's hot!</h1>
             ) : (
               <div className="dropdown-icon-area">
                 <i className="fas fa-cloud-upload-alt"></i>
