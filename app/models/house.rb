@@ -70,7 +70,7 @@ class House < ApplicationRecord
     zipcode = query.to_i if query.match(/^\d+$/)
 
     if (city == "%%" && state == "%%" && zipcode == nil)
-      return self.in_bounds(bounds)
+      return self.in_bounds(params)
     end
 
     if city == "%%"

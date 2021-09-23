@@ -3,6 +3,7 @@ class MarkerManager {
     this.map = map;
     this.history = history;
     this.markers = {};
+    debugger
   }
 
   updateMarkers(houses) {

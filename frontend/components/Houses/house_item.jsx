@@ -43,7 +43,7 @@ const HouseItem = (props) => {
   };
 
   return (
-    <div className="property-thumbnail-container">
+    <div className="property-thumbnail-container" id={house.id}>
       <div className="property-thumbnail">
         <img src={house.photoUrls} alt="house-thumbnail" onClick={onClick} />
         <div className="heart-container">
