@@ -70,11 +70,27 @@ function MyDropzone(props) {
           <>
             <input {...getInputProps()} />
             {isDragActive ? (
-              <h1 style={{ color: "red" }}>Drop it like it's hot!</h1>
+              <>
+                <i
+                  className="fas fa-cloud-upload-alt"
+                  style={{
+                    color: "indianred",
+                    fontSize: "200px",
+                    lineHeight: "400px",
+                    textShadow: "0 0 20px #fa559d",
+                  }}></i>
+                <h1
+                  style={{
+                    color: "indianred",
+                    textShadow: "0 0 20px #fa559d",
+                  }}>
+                  Drop it like it's hot!
+                </h1>
+              </>
             ) : (
               <div className="dropdown-icon-area">
                 <i className="fas fa-cloud-upload-alt"></i>
-                <p>Drag 'n' drop some files here, or click to select files</p>
+                <h1>Drag 'n' drop some files here, or click to select files</h1>
               </div>
             )}
           </>

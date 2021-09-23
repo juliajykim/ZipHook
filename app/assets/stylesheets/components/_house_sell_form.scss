@@ -1,3 +1,6 @@
+@import "../base/fonts";
+@import "../base/colors";
+
 .house-sell-form-container {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -5,7 +8,6 @@
 
 .dropzone-container {
   height: 100vh;
-  border: 5px solid blueviolet;
 }
 
 .house-sell-input-container {
@@ -21,5 +23,19 @@
     label {
       width: 20%;
     }
+  }
+}
+
+.dropzone-container {
+  > h1 {
+    text-align: center;
+    line-height: 200px;
+    color: $zillow-color;
+  }
+}
+
+.dropzone {
+  :hover {
+    text-shadow: 0 0 20px #009dff;
   }
 }

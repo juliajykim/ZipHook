@@ -55,10 +55,10 @@ const HouseSellForm = (props) => {
 
   return (
     <div>
-      Create Listing
       <div className="house-sell-form-container">
         {/* NOTE : Dropzone */}
         <div className="dropzone-container">
+          <h1>Upload photos of your Home Sweet Home </h1>
           <MyDropzone handleFiles={handleFiles} />
         </div>
         <div className="house-sell-input-container">
