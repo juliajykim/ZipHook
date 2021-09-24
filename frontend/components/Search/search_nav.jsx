@@ -130,7 +130,7 @@ const SearchNav = (props) => {
             <button
               value={rent ? "~$1000+" : "~$1000000"}
               onMouseDown={handleDropDownSelection("max_price")}>
-              {rent ? "~$1,000+" : "~$100,000"}
+              {rent ? "~$1,000+" : "~$1,000,000"}
             </button>
             <button
               value={rent ? "~$2000+" : "~$2000000"}
