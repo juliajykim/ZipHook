@@ -16,7 +16,6 @@ const HouseSellForm = (props) => {
   const [photoFiles, setPhotoFiles] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const errors = useSelector((state) => state.errors);
-
   const onInput = (e, type) => {
     // e.preventDefault();
     setCurrState({ ...currState, [type]: e.currentTarget.value });
@@ -28,45 +27,87 @@ const HouseSellForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    debugger;
-    setLoading(true);
-    const formData = new FormData();
-    formData.append("house[address]", currState.address);
-    formData.append("house[city]", currState.city);
-    formData.append("house[state]", currState.state);
-    formData.append("house[zipcode]", currState.zipcode);
-    formData.append("house[price]", currState.price);
-    formData.append("house[baths]", currState.baths);
-    formData.append("house[beds]", currState.beds);
-    formData.append("house[sqft]", currState.sqft);
-    formData.append("house[is_rent]", currState.isRent);
-    formData.append("house[lat]", currState.lat);
-    formData.append("house[lng]", currState.lng);
-    formData.append("house[description]", currState.description);
-    formData.append("house[yr_built]", currState.yrBuilt);
-    if (photoFile) {
-      formData.append("house[photo]", photoFile);
-    }
-    if (photoFiles) {
-      for (let i = 0; i < photoFiles.length; i++) {
-        formData.append("house[photos][]", photoFiles[i]);
+    let isValid = handleInputVals();
+    if (isValid) {
+      setLoading(true);
+      const formData = new FormData();
+      formData.append("house[address]", currState.address);
+      formData.append("house[city]", currState.city);
+      formData.append("house[state]", currState.state);
+      formData.append("house[zipcode]", currState.zipcode);
+      formData.append("house[price]", currState.price);
+      formData.append("house[baths]", currState.baths);
+      formData.append("house[beds]", currState.beds);
+      formData.append("house[sqft]", currState.sqft);
+      formData.append("house[is_rent]", currState.isRent);
+      formData.append("house[lat]", currState.lat);
+      formData.append("house[lng]", currState.lng);
+      formData.append("house[description]", currState.description);
+      formData.append("house[yr_built]", currState.yrBuilt);
+      if (photoFile) {
+        formData.append("house[photo]", photoFile);
       }
+      if (photoFiles) {
+        for (let i = 0; i < photoFiles.length; i++) {
+          formData.append("house[photos][]", photoFiles[i]);
+        }
+      }
+
+      dispatch(addNewHouse(formData));
+      createHouse(formData)
+        .then((house) => {
+          setLoading(false);
+          history.replace(`../zips/${house.id}`);
+          dispatch(receiveHouse);
+        })
+        .fail(function () {
+          window.alert("Oops! Something Went Wrong! Did you add photos?");
+          setLoading(false);
+        });
     }
-    dispatch(addNewHouse(formData));
-    createHouse(formData).then((house) => {
-      setLoading(false);
-      history.replace(`zips/${house.id}`);
-      dispatch(receiveHouse);
-    });
   };
 
-  if (errors.length > 0) {
-    window.alert(errors)
-  }
+  const handleInputVals = () => {
+    if (!isNaN(parseInt(currState.city))) {
+      window.alert("City name should be String");
+      return false;
+    }
+    if (!isNaN(parseInt(currState.state))) {
+      window.alert("State name should be String");
+      return false;
+    }
+    if (isNaN(parseInt(currState.zipcode)) || currState.zipcode.length != 5) {
+      window.alert("Zipcode value should be 5 digits Integer");
+      return false;
+    }
+    if (isNaN(parseInt(currState.price))) {
+      window.alert("Price value should be Integer");
+      return false;
+    }
+    if (isNaN(parseInt(currState.baths))) {
+      window.alert("Bathrooms value should be Integer");
+      return false;
+    }
+    if (isNaN(parseInt(currState.beds))) {
+      window.alert("Bedrooms value should be Integer");
+      return false;
+    }
+    if (isNaN(parseInt(currState.sqft))) {
+      window.alert("Sqft value should be Integer");
+      return false;
+    }
+    if (photoFiles.length == 0) {
+      window.alert("Oops! Don't forget to add photos");
+      return false;
+    }
+
+    return true;
+  };
+
   return (
     <div>
       <LoadingSpinner isLoading={isLoading} />
-      <div className="house-sell-form-container">
+      <div className="house-sell-form-container loading">
         {/* NOTE : Dropzone */}
         <div className="dropzone-container">
           <h1>Upload photos of your Home Sweet Home </h1>

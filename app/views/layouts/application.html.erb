@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= javascript_include_tag 'application' %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials[:google][:api_key]}" %>
+    <%= favicon_link_tag asset_path("favicon.png") %>
+        
       <script src="https://kit.fontawesome.com/38b2222885.js" crossorigin="anonymous"></script>
       <script type="text/javascript">
       window.logoURL = "<%= image_url("logo.png") %>"
@@ -18,6 +20,9 @@
       window.footerUrl = "<%= image_url("footer.png") %>"
       window.sellBg1 =  "<%= image_url("house_for_sale.png") %>"
       window.sellBg2 =  "<%= image_url("sell2.png") %>"
+      window.loaderGif = "<%= image_url("Engineer.gif") %>"
+      window.loaderlogoGif = "<%= image_url("lodingfavicon.gif") %>"
+      
     </script>
 
 

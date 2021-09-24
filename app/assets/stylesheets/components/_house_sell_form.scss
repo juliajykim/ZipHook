@@ -44,7 +44,7 @@
   position: relative;
 }
 
-#add-house {
+.add-house {
   margin: 20px;
   padding: 20px;
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -55,6 +55,12 @@
   box-shadow: 5px 5px 8px #d0c9c9;
   &:hover{
     box-shadow: 5px 5px 8px 2px #8f92ed;
+  }
+}
+.logged-in{
+  background-color: goldenrod;
+    &:hover{
+    box-shadow: 5px 5px 8px 2px #dded8f;
   }
 }
 
