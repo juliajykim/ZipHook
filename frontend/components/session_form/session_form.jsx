@@ -17,6 +17,8 @@ const SessionForm = (props) => {
         return "Email can't be empty";
       } else if (errors[i].includes("Invalid")) {
         return "Invalid Email";
+      } else if (errors[i].includes("already")) {
+        return "Email has already been taken";
       }
     }
   };
@@ -25,7 +27,7 @@ const SessionForm = (props) => {
     for (let i = 0; i < errors.length; i++) {
       if (errors[i].includes("short")) {
         return "Password must be at least 6 characters";
-      } else if (errors[i].includes("Invalid")) {
+      } else if (errors[i].includes("Invalid password")) {
         return "Invalid Password";
       }
     }
@@ -50,10 +52,23 @@ const SessionForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formType === "login") {
-      dispatch(login(user)).then(dispatch(closeModal));
+      dispatch(login(user)).then(function () {
+        if (errors.length > 0) {
+          errors << "something wrong!";
+        } else {
+          dispatch(closeModal());
+        }
+      });
       dispatch(clearErrors());
     } else {
-      dispatch(signup(user)).then(dispatch(closeModal));
+      dispatch(signup(user)).then(function () {
+        if (errors.length > 0) {
+          errors << "something wrong!";
+        } else {
+          dispatch(closeModal());
+        }
+      });
+
       dispatch(clearErrors());
     }
   };
