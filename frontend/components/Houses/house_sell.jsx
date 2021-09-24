@@ -21,13 +21,13 @@ const HouseSell = (props) => {
             <button
               className="add-house logged-in"
               onClick={() => history.push("/sell/form")}>
-              Add My Sweet Home
+              Add your Sweet Home
             </button>
           ) : (
             <button
               className="add-house"
               onClick={() => dispatch(openModal("login"))}>
-              Login to sell my house
+              Login to sell your house
             </button>
           )}
         </div>
