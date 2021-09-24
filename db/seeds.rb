@@ -129,7 +129,7 @@ end
   house.state_id = ny.id
   house.state = ny
   house.zipcode = zipcodes.sample
-  house.price = rand(500000..100000000) / 5000 * 1000
+  house.price = rand(500000..10000000) / 5000 * 1000
   house.beds = rand(1..6)
   house.baths = rand(1..5)
   house.sqft = rand(400..5000) / 10 * 10

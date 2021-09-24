@@ -1,9 +1,22 @@
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router";
 import { updateFilter, removeAllFilter } from "../../actions/filter_action";
 
 const SearchNav = (props) => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  let rent;
+  let buy;
+  if (
+    location.pathname.includes("rent") ||
+    location.pathname.includes("zips")
+  ) {
+    rent = true;
+  }
+  if (location.pathname.includes("buy")) {
+    buy = true;
+  }
   const [query, setQuery] = useState("");
   const [pricetxt, setPriceTxt] = useState("Price");
   const [bdText, setBdText] = useState("Bedrooms");
@@ -57,7 +70,7 @@ const SearchNav = (props) => {
   };
   return (
     <div className="search-nav-area">
-      {/* TODO: Query Input Area */}
+      {/* NOTE: Query Input Area */}
       <form onSubmit={handleQuerySubmit} className="search-form">
         <div className="search-box">
           <input
@@ -72,7 +85,7 @@ const SearchNav = (props) => {
         </div>
       </form>
 
-      {/* TODO: Price Dropdown */}
+      {/* NOTE: Price Dropdown */}
       <div className="filter-drop-down-wrapper">
         <button onFocus={setIsPriceOpen} onBlur={setIsPriceOpen}>
           {pricetxt}
@@ -81,68 +94,68 @@ const SearchNav = (props) => {
           <div className="price-options">
             <h3> Min</h3>
             <button
-              value="$0+"
+              value={rent ? "$0+" : "$100000+"}
               onMouseDown={handleDropDownSelection("min_price")}>
-              $0+
+              {rent ? "$0+" : "$100,000+"}
             </button>
             <button
-              value="$500+"
+              value={rent ? "$500+" : "$500000+"}
               onMouseDown={handleDropDownSelection("min_price")}>
-              $500+
+              {rent ? "$500+" : "$500,000+"}
             </button>
             <button
-              value="$1000+"
+              value={rent ? "$1000+" : "$1000000+"}
               onMouseDown={handleDropDownSelection("min_price")}>
-              $1000+
+              {rent ? "$1,000+" : "$1,000,000+"}
             </button>
             <button
-              value="$1500+"
+              value={rent ? "$1500+" : "$1500000+"}
               onMouseDown={handleDropDownSelection("min_price")}>
-              $1500+
+              {rent ? "$1,500+" : "$1,500,000+"}
             </button>
             <button
-              value="$2000+"
+              value={rent ? "$2000+" : "$2000000+"}
               onMouseDown={handleDropDownSelection("min_price")}>
-              $2000+
+              {rent ? "$2,000+" : "$2,000,000+"}
             </button>
             <button
-              value="$3000+"
+              value={rent ? "$3000+" : "$3000000+"}
               onMouseDown={handleDropDownSelection("min_price")}>
-              $3000+
+              {rent ? "$3,000+" : "$3,000000+"}
             </button>
           </div>
           <h3> - </h3>
           <div className="price-options">
             <h3> Max </h3>
             <button
-              value="~$1000"
+              value={rent ? "~$1000+" : "~$1000000"}
               onMouseDown={handleDropDownSelection("max_price")}>
-              ~$1000
+              {rent ? "~$1,000+" : "~$100,000"}
             </button>
             <button
-              value="~$2000"
+              value={rent ? "~$2000+" : "~$2000000"}
               onMouseDown={handleDropDownSelection("max_price")}>
-              ~$2000
+              {rent ? "~$2,000+" : "~$2,000,000"}
             </button>
             <button
-              value="~$3000"
+              value={rent ? "~$3000+" : "~$3000000"}
               onMouseDown={handleDropDownSelection("max_price")}>
-              ~$3000
+              {rent ? "~$3,000+" : "~$3,0000,000"}
             </button>
             <button
-              value="~$4000"
+              value={rent ? "~$4000+" : "~$4000000"}
               onMouseDown={handleDropDownSelection("max_price")}>
-              ~$4000
+              {rent ? "~$4000+" : "~$4,000,000"}
             </button>
             <button
-              value="~$5000"
+              value={rent ? "~$5000+" : "~$5000000"}
               onMouseDown={handleDropDownSelection("max_price")}>
-              ~$5000
+              {rent ? "~$5,000+" : "~$5,000,000"}
             </button>
             <button
-              value="~$6000"
+              value={rent ? "~$6000+" : "~$6000000"}
               onMouseDown={handleDropDownSelection("max_price")}>
-              ~$6000
+              {rent ? "~$6000+" : "~$6,000,000"}
             </button>
           </div>
         </div>
