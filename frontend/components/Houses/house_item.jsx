@@ -9,7 +9,8 @@ import { createSave, deleteSave } from "../../actions/saves_actions";
 
 const HouseItem = (props) => {
   //hooks
-  const { house, saves } = props;
+
+  const { house, saves, isRent } = props;
   const currentUser = useSelector((state) => state.session.currentUser);
 
   const [isSaved, setIsSaved] = useState(saves.includes(house.id));
@@ -60,7 +61,11 @@ const HouseItem = (props) => {
       </div>
       <div className="property-thumbnail-info">
         <div>
-          <h2>${`${house.price}`} /mo</h2>
+          {isRent ? (
+            <h2>${`${house.price}`} /mo</h2>
+          ) : (
+            <h2>${`${house.price.toLocaleString()}`}</h2>
+          )}
           <p>
             {house.address} , {house.city}, {house.state}, {house.zipcode}
           </p>

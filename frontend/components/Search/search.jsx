@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { updateFilter } from "../../actions/filter_action";
 import HousesIndex from "../Houses/houses_index";
 import Map from "../Map/map";
@@ -12,7 +12,22 @@ const Search = (props) => {
   const dispatch = useDispatch();
   const houses = useSelector((state) => state.entities.houses);
   const history = useHistory();
+  const location = useLocation();
 
+  let filteredHouses;
+  if (
+    location.pathname.includes("rent") ||
+    location.pathname.includes("zips")
+  ) {
+    filteredHouses = Object.values(houses).filter(
+      (house) => house.isRent == true
+    );
+  }
+  if (location.pathname.includes("buy")) {
+    filteredHouses = Object.values(houses).filter(
+      (house) => house.isRent == false
+    );
+  }
   return (
     <div>
       <div>
@@ -24,7 +39,7 @@ const Search = (props) => {
             dispatch={dispatch}
             history={history}
             updateFilter={updateFilter}
-            houses={Object.values(houses)}
+            houses={filteredHouses}
           />
         </div>
         <div className="listing-page-right">

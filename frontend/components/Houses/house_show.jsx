@@ -13,7 +13,6 @@ const HouseShow = (props) => {
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
-
   const [house, setHouse] = useState({});
   const saves = useSelector((state) =>
     state.session.currentUser ? state.session.currentUser.saves : []
@@ -23,7 +22,7 @@ const HouseShow = (props) => {
   //Props
   const houseId = props.match.params.id;
   const [isSaved, setIsSaved] = useState(saves.includes(parseInt(houseId)));
-  
+
   //FetchHouse when componentDidMount
   useEffect(() => {
     fetchHouse(houseId).then((house) => setHouse(house));
@@ -83,7 +82,11 @@ const HouseShow = (props) => {
             <div className="property-info">
               <div className="property-pbbs">
                 <h1>
-                  ${house.price} <p>/mo</p>
+                  {house.isRent ? (
+                    <h1>${house.price} /mo</h1>
+                  ) : (
+                    <h1>${house.price.toLocaleString()}</h1>
+                  )}
                 </h1>
                 <div className="modal-property-detail">
                   <p> {house.beds} bd </p>

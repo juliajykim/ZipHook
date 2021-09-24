@@ -21,6 +21,8 @@ const App = () => {
         <ProtectedRoute exact path="/zips/saves" component={SavedHouses} />
         <Route path="/zips/:id" component={HouseShow} />
         <ProtectedRoute exact path="/sell/form" component={HouseSellForm} />
+        <Route path="/buy" component={Search} />
+        <Route path="/rent" component={Search} />
         <Route path="/sell" component={HouseSell} />
         <Route path="/zips" component={Search} />
         <Route exact path="/" component={Splash} />

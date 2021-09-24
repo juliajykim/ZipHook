@@ -11,8 +11,8 @@ const HeaderNav = () => {
   return (
     <div className="NavHeader">
       <div className="NavHeader-left">
-        <Link to="/zips"> Buy </Link>
-        <Link to="/zips"> Rent </Link>
+        <Link to="/buy"> Buy </Link>
+        <Link to="/rent"> Rent </Link>
         <Link to="/sell"> Sell </Link>
         <a href="https://juliajykim.github.io/JuliaKim/#home"> AgentFinder </a>
       </div>

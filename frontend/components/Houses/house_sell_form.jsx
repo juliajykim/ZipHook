@@ -53,7 +53,7 @@ const HouseSellForm = (props) => {
         }
       }
 
-      dispatch(addNewHouse(formData));
+      // dispatch(addNewHouse(formData));
       createHouse(formData)
         .then((house) => {
           setLoading(false);
@@ -216,8 +216,8 @@ const HouseSellForm = (props) => {
                   id="rent"
                   name="isRent"
                   value={true}
-                  checked={currState.is_rent === "true"}
-                  onChange={(e) => onInput(e, "is_rent")}
+                  checked={currState.isRent === "true"}
+                  onChange={(e) => onInput(e, "isRent")}
                 />
                 <label htmlFor="rent">
                   <p id="isRent-text">Rent</p>
@@ -229,8 +229,8 @@ const HouseSellForm = (props) => {
                   id="sell"
                   name="isRent"
                   value={false}
-                  onChange={(e) => onInput(e, "is_rent")}
-                  checked={currState.is_rent === "false"}
+                  onChange={(e) => onInput(e, "isRent")}
+                  checked={currState.isRent === "false"}
                 />
                 <label htmlFor="sell">
                   <p id="isRent-text">Sell</p>

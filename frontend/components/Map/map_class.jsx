@@ -55,7 +55,9 @@ class MapClass extends React.Component {
     houses.forEach((house) =>
       house.addEventListener("mouseover", () => {
         let marker = this.MarkerManager.markers[house.id];
-        marker.setIcon("https://maps.google.com/mapfiles/ms/icons/blue-dot.png");
+        marker.setIcon(
+          "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+        );
         marker.setAnimation(google.maps.Animation.BOUNCE);
       })
     );
