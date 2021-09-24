@@ -21,7 +21,7 @@ const HeaderNav = () => {
       </Link>
       <div className="NavHeader-right">
         <a href="https://www.linkedin.com/in/julia-kim-350712213/"> LinkedIn</a>
-        <a href="https://github.com/juliajykim/Zip">Github</a>
+        <a href="https://github.com/juliajykim/ZipHook">Github</a>
         <a href="https://angel.co/u/juliajykim"> AngeList </a>
         <UserIcon />
       </div>

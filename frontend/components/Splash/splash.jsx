@@ -20,7 +20,7 @@ const Splash = (props) => {
       </div>
 
       <div className="options-wrapper">
-        <Link to="/zips">
+        <Link to="/buy">
           <img src={window.buyimgURL} className="options-img" />
           <h4>Buy a home</h4>
           <p className="splash-card-content">

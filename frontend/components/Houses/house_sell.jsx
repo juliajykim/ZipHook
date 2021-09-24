@@ -16,18 +16,18 @@ const HouseSell = (props) => {
       <div className="main-sell">
         <div className="sell-slogan">
           <h1>Sell your home with confidence</h1>
-          <h2>Zip is making it simpler to sell our home and move forward!</h2>
+          <h2>Zip is making it simpler to sell your home and move forward!</h2>
           {currentUser ? (
             <button
               className="add-house logged-in"
               onClick={() => history.push("/sell/form")}>
-              Add your Sweet Home
+              Upload your 🏡
             </button>
           ) : (
             <button
               className="add-house"
               onClick={() => dispatch(openModal("login"))}>
-              Login to sell your house
+              Login to sell your 🏡
             </button>
           )}
         </div>
