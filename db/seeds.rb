@@ -33,12 +33,9 @@ ny = State.create!(name: "NY")
 zipcodes = [
   10001,
   10002,
-  10002,
   10003,
   10004,
-  10004,
   10005,
-  10006,
   10006,
   10007,
   10008,
@@ -46,9 +43,6 @@ zipcodes = [
   10010,
   10011,
   10012,
-  10012,
-  10013,
-  10013,
   10013,
   10014,
   10015,
@@ -80,7 +74,6 @@ zipcodes = [
   10040,
   10041,
   10044,
-  10044,
   10045,
   10048,
 ]
@@ -93,7 +86,7 @@ zipcodes = [
   house.address = Faker::Address.street_address
   house.city_id = cities.sample.id
   house.city = cities.sample
-  house.state_id = states.sample.id
+  house.state_id = ny.id
   house.state = ny
   house.zipcode = zipcodes.sample
   house.price = rand(500..10000) / 100 * 10
@@ -104,8 +97,8 @@ zipcodes = [
   house.description = descriptions.sample
 
   liv_photo_num = rand(1..16)
-  bedroom_photo_num = rand(1..14)
   bathroom_photo_num = rand(1..17)
+  bedroom_photo_num = rand(1..14)
   kitchen_photo_num = rand(1..20)
 
   liv = URI.open("https://ziphook-seed.s3.amazonaws.com/livingroom#{liv_photo_num}.jpg")
@@ -114,9 +107,9 @@ zipcodes = [
   kitchen = URI.open("https://ziphook-seed.s3.amazonaws.com/kitchen#{kitchen_photo_num}.jpg")
 
   liv_file = "livingroom#{liv_photo_num}.jpg"
-  bed_file = "livingroom#{bedroom_photo_num}.jpg"
-  bath_file = "livingroom#{bathroom_photo_num}.jpg"
-  kitchen_file = "livingroom#{kitchen_photo_num}.jpg"
+  bath_file = "bathroom#{bathroom_photo_num}.jpg"
+  bed_file = "bedrooom#{bedroom_photo_num}.jpg"
+  kitchen_file = "kitchen#{kitchen_photo_num}.jpg"
 
   house.photos.attach(io: liv, filename: liv_file)
   house.photos.attach(io: bath, filename: bed_file)
@@ -156,9 +149,9 @@ end
   outside = URI.open("https://ziphook-seed.s3.amazonaws.com/outside#{outside_photo_num}.jpg")
 
   liv_file = "livingroom#{liv_photo_num}.jpg"
-  bed_file = "livingroom#{bedroom_photo_num}.jpg"
-  bath_file = "livingroom#{bathroom_photo_num}.jpg"
-  kitchen_file = "livingroom#{kitchen_photo_num}.jpg"
+  bed_file = "bedrooom#{bedroom_photo_num}.jpg"
+  bath_file = "bathroom#{bathroom_photo_num}.jpg"
+  kitchen_file = "kitchen#{kitchen_photo_num}.jpg"
   outside_file = "outside#{outside_photo_num}.jpg"
 
   house.photos.attach(io: outside, filename: outside_file)
