@@ -83,9 +83,9 @@ const HouseShow = (props) => {
               <div className="property-pbbs">
                 <h1>
                   {house.isRent ? (
-                    <h1>${house.price} /mo</h1>
+                    <h1>$ {house.price} /mo</h1>
                   ) : (
-                    <h1>${house.price.toLocaleString()}</h1>
+                    <h1>$ {house.price.toLocaleString()}</h1>
                   )}
                 </h1>
                 <div className="modal-property-detail">

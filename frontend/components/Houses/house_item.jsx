@@ -62,9 +62,9 @@ const HouseItem = (props) => {
       <div className="property-thumbnail-info">
         <div>
           {isRent ? (
-            <h2>${`${house.price}`} /mo</h2>
+            <h2>$ {`${house.price}`} /mo</h2>
           ) : (
-            <h2>${`${house.price.toLocaleString()}`}</h2>
+            <h2>$ {`${house.price.toLocaleString()}`}</h2>
           )}
           <p>
             {house.address} , {house.city}, {house.state}, {house.zipcode}

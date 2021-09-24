@@ -89,7 +89,7 @@ zipcodes = [
   house.state_id = ny.id
   house.state = ny
   house.zipcode = zipcodes.sample
-  house.price = rand(500..10000) / 100 * 10
+  house.price = rand(1500..10000) / 100 * 100
   house.beds = rand(1..6)
   house.baths = rand(1..5)
   house.sqft = rand(400..5000) / 10 * 10
@@ -103,7 +103,7 @@ zipcodes = [
 
   liv = URI.open("https://ziphook-seed.s3.amazonaws.com/livingroom#{liv_photo_num}.jpg")
   bath = URI.open("https://ziphook-seed.s3.amazonaws.com/bathroom#{bathroom_photo_num}.jpg")
-  bed = URI.open("https://ziphook-seed.s3.amazonaws.com/bedrooom#{bedroom_photo_num}.jpg")
+  bed = URI.open("https://ziphook-seed.s3.amazonaws.com/bedroom#{bedroom_photo_num}.jpg")
   kitchen = URI.open("https://ziphook-seed.s3.amazonaws.com/kitchen#{kitchen_photo_num}.jpg")
 
   liv_file = "livingroom#{liv_photo_num}.jpg"
@@ -112,8 +112,8 @@ zipcodes = [
   kitchen_file = "kitchen#{kitchen_photo_num}.jpg"
 
   house.photos.attach(io: liv, filename: liv_file)
-  house.photos.attach(io: bath, filename: bed_file)
-  house.photos.attach(io: bed, filename: bath_file)
+  house.photos.attach(io: bed, filename: bed_file)
+  house.photos.attach(io: bath, filename: bath_file)
   house.photos.attach(io: kitchen, filename: kitchen_file)
   house.save!
 end
@@ -126,7 +126,7 @@ end
   house.address = Faker::Address.street_address
   house.city_id = cities.sample.id
   house.city = cities.sample
-  house.state_id = states.sample.id
+  house.state_id = ny.id
   house.state = ny
   house.zipcode = zipcodes.sample
   house.price = rand(500000..100000000) / 5000 * 1000
@@ -144,20 +144,21 @@ end
 
   liv = URI.open("https://ziphook-seed.s3.amazonaws.com/livingroom#{liv_photo_num}.jpg")
   bath = URI.open("https://ziphook-seed.s3.amazonaws.com/bathroom#{bathroom_photo_num}.jpg")
-  bed = URI.open("https://ziphook-seed.s3.amazonaws.com/bedrooom#{bedroom_photo_num}.jpg")
+  bed = URI.open("https://ziphook-seed.s3.amazonaws.com/bedroom#{bedroom_photo_num}.jpg")
   kitchen = URI.open("https://ziphook-seed.s3.amazonaws.com/kitchen#{kitchen_photo_num}.jpg")
   outside = URI.open("https://ziphook-seed.s3.amazonaws.com/outside#{outside_photo_num}.jpg")
 
   liv_file = "livingroom#{liv_photo_num}.jpg"
-  bed_file = "bedrooom#{bedroom_photo_num}.jpg"
   bath_file = "bathroom#{bathroom_photo_num}.jpg"
+  bed_file = "bedrooom#{bedroom_photo_num}.jpg"
   kitchen_file = "kitchen#{kitchen_photo_num}.jpg"
   outside_file = "outside#{outside_photo_num}.jpg"
 
   house.photos.attach(io: outside, filename: outside_file)
   house.photos.attach(io: liv, filename: liv_file)
-  house.photos.attach(io: bath, filename: bed_file)
-  house.photos.attach(io: bed, filename: bath_file)
+  house.photos.attach(io: bed, filename: bed_file)
+  house.photos.attach(io: bath, filename: bath_file)
   house.photos.attach(io: kitchen, filename: kitchen_file)
+
   house.save!
 end
