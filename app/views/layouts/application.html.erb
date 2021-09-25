@@ -3,6 +3,11 @@
   <head>
     <title>ZipHook</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta property='og:title' content='Zip'/>
+    <meta property='og:image' content="<%= image_url("main.gif") %>"/>
+    <meta property='og:description' content='A clone of Zillow built with React Hooks, Redux, Ruby on Rails, AWS, Google Map Api, Javascript, and SQL that allows users to upload, search, and save properties with an immersive photo experience'/>
+    <meta property='og:url' content='https://ziphook.herokuapp.com/#/'/>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= javascript_include_tag "application" %>
@@ -22,7 +27,7 @@
       window.sellBg2 =  "<%= image_url("sell2.png") %>"
       window.loaderGif = "<%= image_url("Engineer.gif") %>"
       window.loaderlogoGif = "<%= image_url("lodingfavicon.gif") %>"
-      
+      window.linkedInGif = "<%= image_url("main.gif") %>"
     </script>
 
 
