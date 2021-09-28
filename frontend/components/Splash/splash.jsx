@@ -16,7 +16,7 @@ const Splash = (props) => {
 
       <div className="main-content-slogan-container">
         <span> Whether you’re buying, selling or renting,</span>
-        <span>we can help you move forward.</span>
+        <span> we can help you move forward.</span>
       </div>
 
       <div className="options-wrapper">
@@ -24,7 +24,7 @@ const Splash = (props) => {
           <img src={window.buyimgURL} className="options-img" />
           <h4>Buy a home</h4>
           <p className="splash-card-content">
-            Find your place with an immersive photo experience with Zip{" "}
+            Find your place with an immersive photo experience with Zip
           </p>
           <div>
             <button className="options-btn">Search Homes</button>
@@ -34,7 +34,7 @@ const Splash = (props) => {
           <img src={window.sellimgURL} className="options-img" />
           <h4>Sell a home</h4>
           <p className="splash-card-content">
-            Sell your home with confidence Zillow is making it simpler to sell
+            Sell your home with confidence! Zip is making it simpler to sell
             your home and move forward.
           </p>
           <div>
