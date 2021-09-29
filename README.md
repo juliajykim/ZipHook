@@ -55,7 +55,7 @@ Zip will allow users to upload, search, and save properties and with an immersiv
 ### Login / Sign Up Session
 
 <p align="left">
- <img align="left" src='/Users/juliakim/Desktop/ZipHook/session.gif'> 
+ <img align="left" src='https://github.com/juliajykim/ZipHook/blob/main/session.gif'> 
 
 Built modals for user authentication action and information show page for the individual property listings for the better user experience. 
 <br>
@@ -63,7 +63,7 @@ Error messages will be displayed accordingly
 <br>
 users can login with Demo User account
 &nbsp;
-<img align="left" src='/Users/juliakim/Desktop/ZipHook/modal.gif'>
+<img align="left" src='https://github.com/juliajykim/ZipHook/blob/main/modal.gif'>
 
 
 <br><br><br><br><br><br><br>
