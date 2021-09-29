@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="180" height="70" src="/Users/juliakim/Desktop/ZipHook/logo.png">
+  <img width="180" height="70" src="https://github.com/juliajykim/ZipHook/blob/main/app/assets/images/logo.png">
 </p>
 
 [Zip(Live Site)](https://ziphook.herokuapp.com/#/) is a clone of real estate marketplace [Zillow](https://www.zillow.com/) built with _React Hooks_, _Redux_, _Ruby on Rails_, _Javascript_ ,_PostgreSQL_, _AWS_, _Google Map API_, and _SCSS_.
@@ -73,17 +73,17 @@ users can login with Demo User account
 
 ### Search & Filter
 &nbsp;
-<img width="100%" height="400" src='/Users/juliakim/Desktop/ZipHook/bound.gif'>
+<img width="100%" height="400" src='https://github.com/juliajykim/ZipHook/blob/main/bound.gif'>
 Only Property within the map boundaries will be listed
 
 &nbsp;
-<img src='/Users/juliakim/Desktop/ZipHook/main.gif'>
+<img src='https://github.com/juliajykim/ZipHook/blob/main/main.gif'>
 Users can filter search result by price, number of bedrooms, and number of bathrooms, city, state, and zipcode
 \
 &nbsp;
 
 ### Save
-<img src="/Users/juliakim/Desktop/ZipHook/saves.gif"> 
+<img src="https://github.com/juliajykim/ZipHook/blob/main/save.gif"> 
 Users can save property listing and saved properties will be shown in the separate page. 
 <br>
 User can toggle save icon in the separate page as well.
@@ -93,7 +93,7 @@ User can toggle save icon in the separate page as well.
 ### Upload & Geocoding
 
 <p align="right">
-  <img src="/Users/juliakim/Desktop/ZipHook/upload.gif"> 
+  <img src="https://github.com/juliajykim/ZipHook/blob/main/upload.gif"> 
 </p>
 Only logged in user can upload their properties to rent or sell.
 <br> Users can drag & drop property's photos to attach.
