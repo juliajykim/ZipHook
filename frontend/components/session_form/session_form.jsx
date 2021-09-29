@@ -10,12 +10,16 @@ const SessionForm = (props) => {
   const passwordRef = useRef(null);
   const dispatch = useDispatch();
   const formType = useSelector((state) => state.ui.modal);
+  const currentUser = useSelector((state) => state.session.currentUser);
 
+  if (currentUser) {
+    dispatch(closeModal());
+  }
   const emailErr = () => {
     for (let i = 0; i < errors.length; i++) {
       if (errors[i].includes("blank")) {
         return "Email can't be empty";
-      } else if (errors[i].includes("Invalid")) {
+      } else if (errors[i].includes("Invalid login credentials")) {
         return "Invalid Email";
       } else if (errors[i].includes("already")) {
         return "Email has already been taken";
@@ -28,6 +32,8 @@ const SessionForm = (props) => {
       if (errors[i].includes("short")) {
         return "Password must be at least 6 characters";
       } else if (errors[i].includes("Invalid password")) {
+        return "Invalid Password";
+      } else if (errors[i].includes("Invalid login credentials")) {
         return "Invalid Password";
       }
     }
@@ -49,6 +55,8 @@ const SessionForm = (props) => {
     });
   };
 
+  useEffect(() => () => dispatch(clearErrors()), []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formType === "login") {
@@ -60,7 +68,7 @@ const SessionForm = (props) => {
         }
       });
       dispatch(clearErrors());
-    } else {
+    } else if (formType === "signup") {
       dispatch(signup(user)).then(function () {
         if (errors.length > 0) {
           errors << "something wrong!";
@@ -83,8 +91,10 @@ const SessionForm = (props) => {
     dispatch(clearErrors());
     if (formType === "login") {
       dispatch(openModal("signup"));
+      setUser({ email: "", password: "" });
     } else {
       dispatch(openModal("login"));
+      setUser({ email: "", password: "" });
     }
   };
 
@@ -124,12 +134,13 @@ const SessionForm = (props) => {
         <div className="input-section">
           <label id="session"> Email</label>
           <input
-            type="text"
+            type="email"
             id="session-input-email"
             value={user.email}
             placeholder="Enter Email"
             onChange={handleEmail}
             ref={usernameRef}
+            autoComplete="off"
           />
           <p>{emailErr()}</p>
         </div>
@@ -143,6 +154,7 @@ const SessionForm = (props) => {
             placeholder="Enter Password"
             onChange={handlePassword}
             ref={passwordRef}
+            autoComplete="off"
           />
           <p>{pwErr()}</p>
         </div>

@@ -2,15 +2,17 @@
   <img width="180" height="70" src="/Users/juliakim/Desktop/ZipHook/logo.png">
 </p>
 
-[Zip(Live Site)](https://ziphook.herokuapp.com/#/) is a clone of real estate marketplace [Zillow](https://www.zillow.com/) built with *React Hooks*, *Redux*, *Ruby on Rails*, *Javascript* ,*PostgreSQL*, *AWS*, *Google Map API*, and *SCSS*. 
-Zip will allow users to upload, search, and save properties and with an immersive photo experience.  
+[Zip(Live Site)](https://ziphook.herokuapp.com/#/) is a clone of real estate marketplace [Zillow](https://www.zillow.com/) built with _React Hooks_, _Redux_, _Ruby on Rails_, _Javascript_ ,_PostgreSQL_, _AWS_, _Google Map API_, and _SCSS_.
+Zip will allow users to upload, search, and save properties and with an immersive photo experience.
 
 &nbsp;
 
 ## Technologies Used
--------
 
-### Backend 
+---
+
+### Backend
+
 <p align="left">
  <img width="15" height="15" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg"> Ruby on 
 </p>
@@ -21,12 +23,13 @@ Zip will allow users to upload, search, and save properties and with an immersiv
   <img width="15" height="15" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"> PostgreSQL
 </p>
 <p align="left">
-   🔐  Bcrypt for generating uniq password
+   🔐  Bcrypt for generating unique password
 </p>
 
 &nbsp;
 
 ### Frontend
+
 <p align="left">
   <img width="15" height="15" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"> React Hooks
 </p>
@@ -46,15 +49,63 @@ Zip will allow users to upload, search, and save properties and with an immersiv
 &nbsp;
 
 ## Features
--------
+
+---
+
+### Login / Sign Up Session
+
 <p align="left">
-  <img src='/Users/juliakim/Desktop/ZipHook/main.gif'> Google Map API
-</p>
+ <img align="left" src='/Users/juliakim/Desktop/ZipHook/session.gif'> 
+
+Built modals for user authentication action and information show page for the individual property listings for the better user experience. 
+<br>
+Error messages will be displayed accordingly
+<br>
+users can login with Demo User account
+&nbsp;
+<img align="left" src='/Users/juliakim/Desktop/ZipHook/modal.gif'>
+
+
+<br><br><br><br><br><br><br>
+
+\
+&nbsp;
+
+### Search & Filter
+&nbsp;
+<img width="100%" height="400" src='/Users/juliakim/Desktop/ZipHook/bound.gif'>
+Only Property within the map boundaries will be listed
+
+&nbsp;
+<img src='/Users/juliakim/Desktop/ZipHook/main.gif'>
+Users can filter search result by price, number of bedrooms, and number of bathrooms, city, state, and zipcode
+\
+&nbsp;
+
+### Save
+<img src="/Users/juliakim/Desktop/ZipHook/saves.gif"> 
+Users can save property listing and saved properties will be shown in the separate page. 
+<br>
+User can toggle save icon in the separate page as well.
+
+&nbsp;
+
+### Upload & Geocoding
 
 <p align="right">
   <img src="/Users/juliakim/Desktop/ZipHook/upload.gif"> 
 </p>
+Only logged in user can upload their properties to rent or sell.
+<br> Users can drag & drop property's photos to attach.
+<br> User can pin their property on the map and to get coordinates.
+
+\
+&nbsp;
 
 ## Future Plan
--------
 
+---
+
+Users can message to owner
+<br>
+Mobile responsive styling
