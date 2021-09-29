@@ -83,7 +83,7 @@ Users can filter search result by price, number of bedrooms, and number of bathr
 &nbsp;
 
 ### Save
-<img src="https://github.com/juliajykim/ZipHook/blob/main/save.gif"> 
+<img src="https://github.com/juliajykim/ZipHook/blob/main/saves.gif"> 
 Users can save property listing and saved properties will be shown in the separate page. 
 <br>
 User can toggle save icon in the separate page as well.
