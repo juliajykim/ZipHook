@@ -31,14 +31,16 @@
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 50px;
     margin: 20px;
-    text-shadow: -1.5x 0 white, 0 1.5px white, 1.5px 0 white, 0 -1.5px white;
+    text-shadow: -2px 1px 0 white, 2px 1px 0 white, 2px -1px 0 white,
+      -2px -1px 0 white;
   }
   > h2 {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 25px;
     font-weight: 400;
     margin: 20px;
-    text-shadow: -1x 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    text-shadow: -1px 1px 0 white, 1px 1px 0 white, 1px -1px 0 white,
+      -1px -1px 0 white;
   }
   top: 20%;
   color: black;
