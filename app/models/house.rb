@@ -86,8 +86,8 @@ class House < ApplicationRecord
     end
 
     if (zipcode.is_a?(Integer))
-      minrange = zipcode - 100
-      maxrange = zipcode + 100
+      minrange = zipcode - 30
+      maxrange = zipcode + 30
     else
       minrange = nil
       maxrange = nil

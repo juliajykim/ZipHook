@@ -31,12 +31,14 @@
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 50px;
     margin: 20px;
+    text-shadow: -1.5x 0 white, 0 1.5px white, 1.5px 0 white, 0 -1.5px white;
   }
   > h2 {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 25px;
     font-weight: 400;
     margin: 20px;
+    text-shadow: -1x 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   }
   top: 20%;
   color: black;
@@ -53,13 +55,13 @@
   border-radius: 5px;
   background-color: $zillow-color;
   box-shadow: 5px 5px 8px #d0c9c9;
-  &:hover{
+  &:hover {
     box-shadow: 5px 5px 8px 2px #8f92ed;
   }
 }
-.logged-in{
+.logged-in {
   background-color: goldenrod;
-    &:hover{
+  &:hover {
     box-shadow: 5px 5px 8px 2px #dded8f;
   }
 }
