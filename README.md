@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="180" height="70" src="https://github.com/juliajykim/ZipHook/blob/main/app/assets/images/logo.png">
+  <img width="180" height="70" src="https://github.com/juliajykim/ZipHook/blob/main/logo.png">
 </p>
 
 [Zip(Live Site)](https://ziphook.herokuapp.com/#/) is a clone of real estate marketplace [Zillow](https://www.zillow.com/) built with _React Hooks_, _Redux_, _Ruby on Rails_, _Javascript_ ,_PostgreSQL_, _AWS_, _Google Map API_, and _SCSS_.
