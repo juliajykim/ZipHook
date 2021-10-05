@@ -9,8 +9,6 @@ Zip will allow users to upload, search, and save properties and with an immersiv
 
 ## Technologies Used
 
----
-
 ### Backend
 
 <p align="left">
@@ -50,28 +48,25 @@ Zip will allow users to upload, search, and save properties and with an immersiv
 
 ## Features
 
----
-
-### Login / Sign Up Session
+### 🖥 Login / Sign Up Session
 
 <p align="left">
  <img align="left" src='https://github.com/juliajykim/ZipHook/blob/main/session.gif'> 
 
+<img align="left" src='https://github.com/juliajykim/ZipHook/blob/main/modal.gif'>
+&nbsp;
+  <br>
 Built modals for user authentication action and information show page for the individual property listings for the better user experience. 
 <br>
 Error messages will be displayed accordingly
 <br>
 users can login with Demo User account
-&nbsp;
-<img align="left" src='https://github.com/juliajykim/ZipHook/blob/main/modal.gif'>
 
-
-<br><br><br><br><br><br><br>
 
 \
 &nbsp;
 
-### Search & Filter
+### 🔦 Search & Filter
 &nbsp;
 <img width="100%" height="400" src='https://github.com/juliajykim/ZipHook/blob/main/bound.gif'>
 Only Property within the map boundaries will be listed
@@ -82,7 +77,7 @@ Users can filter search result by price, number of bedrooms, and number of bathr
 \
 &nbsp;
 
-### Save
+### 💙 Save
 <img src="https://github.com/juliajykim/ZipHook/blob/main/saves.gif"> 
 Users can save property listing and saved properties will be shown in the separate page. 
 <br>
@@ -90,7 +85,7 @@ User can toggle save icon in the separate page as well.
 
 &nbsp;
 
-### Upload & Geocoding
+### ⬆️ Upload & Geocoding
 
 <p align="right">
   <img src="https://github.com/juliajykim/ZipHook/blob/main/upload.gif"> 
@@ -103,8 +98,6 @@ Only logged in user can upload their properties to rent or sell.
 &nbsp;
 
 ## Future Plan
-
----
 
 Users can message to owner
 <br>
