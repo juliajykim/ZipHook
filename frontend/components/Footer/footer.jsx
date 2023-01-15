@@ -49,7 +49,7 @@ const Footer = (props) => {
           <a href="https://www.linkedin.com/in/julia-kim-350712213/">
             <i className="fab fa-linkedin"></i>
           </a>
-          <a href="https://github.com/juliajykim/Zip">
+          <a href="https://github.com/juliajykim/ZipHook">
             <i className="fab fa-github"></i>
           </a>
           <a href="https://angel.co/u/juliajykim">
